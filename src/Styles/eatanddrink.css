@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+
+
+.gridItems {
+    gap: '2.5rem';
+    padding-right: 1.5rem;
+    text-align: center;
+    background-color: rgb(19, 18, 18);
+    color: white;
+}
