@@ -13,7 +13,7 @@ const Gallery = () => {
     let data = [
         {
             id: 1,
-            imgSrc: Img1,
+            imgSrc: Img2,
         },
         {
             id: 2,
@@ -25,11 +25,35 @@ const Gallery = () => {
         },
         {
             id: 4,
-            imgSrc: Img4,
+            imgSrc: Img3,
         },
         {
             id: 5,
-            imgSrc: Img5,
+            imgSrc: Img4,
+        },{
+            id: 6,
+            imgSrc: Img3,
+        },{
+            id: 7,
+            imgSrc: Img2,
+        },{
+            id: 8,
+            imgSrc: Img4,
+        },{
+            id: 9,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
+            imgSrc: Img2,
         },
 
     ]
