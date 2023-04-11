@@ -5,7 +5,7 @@ import Img3 from '../img/img3.jpg'
 import Img4 from '../img/img4.jpg'
 import Img5 from '../img/img5.jpg'
 import "../Styles/gallery.css"
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -40,7 +40,6 @@ const Gallery = () => {
         setModel(true)
     }
     return (
-
         <>
         <div className={model? "model open" : "model"}>
             <img src= {tempimgSrc}/>
