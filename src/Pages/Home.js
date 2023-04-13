@@ -15,10 +15,6 @@ function Home() {
             <Image></Image>
           </div>
           <div>
-            <Hr2></Hr2>
-          </div>
-    
-          <div>
     
             <EatAndDrinks></EatAndDrinks>
           </div>

@@ -8,7 +8,7 @@ function ImageFragment() {
     const myImageElement = new Image();
     myImageElement.src = myImage;
     return (
-        <div className='container' style={{ position: 'relative' }}>
+        <div className='container' style={{ position: 'relative'}}>
             <img className="home-image" src={myImageElement.src} alt='My Image' style={{ width: '100%', height: '750px' }} />
 
             <Card />

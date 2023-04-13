@@ -6,26 +6,34 @@ import WineBarOutlinedIcon from '@mui/icons-material/WineBarOutlined';
 
 function EatAndDrink() {
     return (
-       
-        <div className='gridItems' style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0,5rem' }}>
-            
-            <div>
-                <SportsBarOutlinedIcon />
-                <h5>Foco menu</h5>
-                <p>Lorem Ipsum is simply dummy<br></br> text of the printing and typesetting industry</p>
+        <div className='gridItems'>
+            <div className='itens-center'>
+                <h4>EAT AND DRINK</h4>
+                
             </div>
-            <div>
-                <FoodBankOutlinedIcon />
-                <h5>Foco menu</h5>
-                <p>Lorem Ipsum is simply dummy<br></br> text of the printing and typesetting industry</p>
-            </div>
-            <div>
-                <WineBarOutlinedIcon />
-                <h5>Foco menu</h5>
-                <p>Lorem Ipsum is simply dummy<br></br> text of the printing and typesetting industry</p>
-            </div>
+            <hr></hr>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0,5rem' }}>
 
+                <div>
+                    <SportsBarOutlinedIcon style={{ fontSize: 60 }} />
+                    <h5>Foco menu</h5>
+                    <p>Lorem Ipsum is simply dummy<br></br> text of the printing and <br></br>typesetting industry</p>
+                </div>
+
+                <div>
+                    <FoodBankOutlinedIcon style={{ fontSize: 60 }} />
+                    <h5>Foco menu</h5>
+                    <p>Lorem Ipsum is simply dummy<br></br> text of the printing and <br></br>typesetting industry</p>
+                </div>
+                <div>
+                    <WineBarOutlinedIcon style={{ fontSize: 60 }} />
+                    <h5>Foco menu</h5>
+                    <p>Lorem Ipsum is simply dummy<br></br> text of the printing and <br></br>typesetting industry</p>
+                </div>
+
+            </div>
         </div>
+
     );
 }
 export default EatAndDrink
