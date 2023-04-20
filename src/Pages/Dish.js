@@ -6,7 +6,7 @@ import EatAndDrinks from "../Components/EatAndDrinks";
 import Gallery from "../Components/Gallery";
 
 
-function Restaurant() {
+function Dish() {
     return (
       
         <React.Fragment>
@@ -30,4 +30,4 @@ function Restaurant() {
         </React.Fragment>
       );
 }
-export default Restaurant;
+export default Dish;

@@ -1,7 +1,8 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Restaurant from "./Pages/Restaurant";
+import Dish from "./Pages/Dish";
+import Login from "./Pages/Login";
 
 
 
@@ -11,7 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/restaurant" element={<Restaurant />}/>
+        <Route path="/Dish" element={<Dish />}/>
+        <Route path="/Login" element={<Login />}/>
       </Routes>
     </BrowserRouter>
   );
