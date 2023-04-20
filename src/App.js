@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Dish from "./Pages/Dish";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/Dish" element={<Dish />}/>
         <Route path="/Login" element={<Login />}/>
+        <Route path="/Register" element={<Register />}/>
       </Routes>
     </BrowserRouter>
   );
