@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import Dish from "./Pages/Dish";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Restaurant from "./Pages/Restaurant";
+
 
 
 
@@ -16,6 +18,7 @@ function App() {
         <Route path="/Dish" element={<Dish />}/>
         <Route path="/Login" element={<Login />}/>
         <Route path="/Register" element={<Register />}/>
+        <Route path="/Restaurant" element={<Restaurant />}/>
       </Routes>
     </BrowserRouter>
   );
