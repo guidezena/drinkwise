@@ -7,72 +7,99 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import logoDrinkWise from '../img/logodw.png'
 
 function Login() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [show, setShow] = useState(false)
- 
-    const handleClick = (e) => {
-       e.preventDefault()
-       setShow(!show);
-    }
- 
-    return (
-       <div className="login">
-          <div className="login-logo">
-             <img
-                src={logoDrinkWise}
-                alt="Imagem "
-             />
-          </div>
- 
-          <div className="login-right">
-             <h1>Acessar App</h1>
- 
-             <div className="login-loginInputEmail">
-                <EmailIcon />
-                <input
-                   type="email"
-                   placeholder="Digite um email"
-                   value={email}
-                   onChange={e => setEmail(e.target.value)}
-                />
-             </div>
- 
-             <div className="login-loginInputPassword">
-                <KeyIcon />
-                <input
-                   placeholder="Digite sua senha"
-                   type={show ? "text" : "password"}
-                   value={password}
-                   onChange={e => setPassword(e.target.value)}
-                />
-                <div className="login-eye">
-                   {show ? (
-                      <VisibilityIcon
-                         size={20}
-                         onClick={handleClick}
-                      />
-                   ) : (
-                         <VisibilityOffIcon
-                            size={20}
-                            onClick={handleClick}
-                         />
-                      )}
-                </div>
-             </div>
- 
-             <button type="submit">
-                Entrar
-             </button>
- 
-             <h4>Não tenho conta!</h4>
- 
-             <button type="submit">
-                Cadastrar
-             </button>
-          </div>
-       </div>
-    )
- }
- 
- export default Login
+   const [email, setEmail] = useState("")
+   const [password, setPassword] = useState("")
+   const [show, setShow] = useState(false)
+   
+   async function handleLogin() {
+      try {
+         const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/login', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+         });
+         const data = await response.json();
+         if (response.status === 200) {
+            // Login bem-sucedido, redirecionar para a página principal
+            window.location.href = '/dish';
+            alert('login feito com sucesso')
+         } else {
+            // Login mal-sucedido, exibir mensagem de erro
+            alert('E-mail ou senha incorretos');
+         }
+      } catch (error) {
+         // Erro ao chamar a API, exibir mensagem de erro
+         alert('Erro ao fazer login');
+      }
+   }
+
+   const handleClick = (e) => {
+      e.preventDefault()
+      setShow(!show);
+
+
+   }
+
+   return (
+      <div className="login">
+         <div className="login-logo">
+            <img
+               src={logoDrinkWise}
+               alt="Imagem "
+            />
+         </div>
+
+         <div className="login-right">
+            <h1>Acessar App</h1>
+
+            <div className="login-loginInputEmail">
+               <EmailIcon />
+               <input
+                  type="email"
+                  placeholder="Digite um email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+               />
+            </div>
+
+            <div className="login-loginInputPassword">
+               <KeyIcon />
+               <input
+                  placeholder="Digite sua senha"
+                  type={show ? "text" : "password"}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+               />
+               <div className="login-eye">
+                  {show ? (
+                     <VisibilityIcon
+                        size={20}
+                        onClick={handleClick}
+                     />
+                  ) : (
+                     <VisibilityOffIcon
+                        size={20}
+                        onClick={handleClick}
+                     />
+                  )}
+               </div>
+            </div>
+
+            <button onClick={handleLogin} type="submit">
+               Entrar
+            </button>
+
+            <h4>Não tenho conta!</h4>
+
+            <button type="submit">
+               Cadastrar
+            </button>
+         </div>
+         
+      </div>
+   )
+}
+
+export default Login

@@ -7,7 +7,12 @@ import Register from "./Pages/Register";
 import Restaurant from "./Pages/Restaurant";
 
 
+const Private = ({Item}) => {
+  const signed = false;
 
+  return signed > 0 ? <Item/> : <Login/>
+ 
+}
 
 
 
@@ -15,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Private Item = {Home} />}/>
         <Route path="/Dish" element={<Dish />}/>
         <Route path="/Login" element={<Login />}/>
         <Route path="/Register" element={<Register />}/>
