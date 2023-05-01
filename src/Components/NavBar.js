@@ -12,8 +12,8 @@ function Navbar(){
             <h3>Logo</h3>
             <nav ref={navRef}>
                 <a href="/#">Home</a>
-                <a href="/#">Restaurantes</a>
-                <a href="/#">Home</a>
+                <a href="/restaurant">Restaurantes</a>
+                <a href="/dish">Pratos</a>
                 <a href="/#">Home</a>
                 <button  className="nav-btn nav-close-btn" onClick={showNavBar}>
                     <FaTimes/>

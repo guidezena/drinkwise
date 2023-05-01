@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
 import Image from "../Components/Image";
-import CardRestaurnt from "../Components/CardRestaurant";
+import CardRestaurantRight from "../Components/CardRestaurantRight";
+import CardRestaurantLeft from "../Components/CardRestaurantLeft";
 
 
 function Restaurant() {
@@ -13,7 +14,10 @@ function Restaurant() {
                 <Image></Image>
             </div>
             <div>
-                <CardRestaurnt></CardRestaurnt>
+                <CardRestaurantRight></CardRestaurantRight>
+            </div>
+            <div>
+                <CardRestaurantLeft></CardRestaurantLeft>
             </div>
         </React.Fragment>
     );

@@ -1,43 +1,115 @@
-.card_restaurant {
-    background-color: rgb(56, 57, 58);
-    padding: 2rem;
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 20px 30px -20px rgba(5, 5, 5, 0.24);
-    margin: 8px;
-    padding-bottom: 2rem;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    grid-gap: 1rem;
-    gap: 1rem;
-  }
-  
-  .header .image {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 9999px;
-    object-fit: cover;
-    background-color: royalblue;
-  }
-  
+.card_rigth {
+  padding-top: 15px;
+  background-color: rgb(19, 18, 18);
+  color: white;
+  margin-top: 10px;
 
-  
-  .name {
-    margin-top: 0.25rem;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    font-weight: 600;
-    --tw-text-opacity: 1;
-    color: rgba(55, 65, 81, 1);
-  }
-  
-  .message {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    margin-top: 1rem;
-    color: rgba(107, 114, 128, 1);
-  }
+
+
+}
+
+.img_rigth {
+  float: right;
+  height: 100px;
+  /* Espaçamento entre a imagem e o texto */
+  padding-left: 20px;
+  border-radius: 50px;
+}
+
+
+.text_card_rigth {
+  padding-top: 5px;
+  /* Espaçamento entre o topo do texto e a imagem */
+  text-align: right;
+  margin-right: 3px;
+
+
+
+}
+
+.card_left {
+  padding-top: 15px;
+  background-color: rgb(100, 98, 98);
+  color: white;
+  margin-top: 5px;
+
+
+
+}
+
+.img_left {
+  float: left;
+  height: 100px;
+  /* Espaçamento entre a imagem e o texto */
+  padding-right: 20px;
+  border-radius: 50px;
+}
+
+
+.text_card_left {
+  padding-top: 5px;
+  /* Espaçamento entre o topo do texto e a imagem */
+  text-align: left;
+  margin-right: 3px;
+
+
+
+}
+.card_drink {
+  padding-top: 15px;
+  background-color: rgb(100, 98, 98);
+  color: white;
+  margin-top: 5px;
+  padding-bottom: 15px;
+
+
+
+}
+
+.img_drink {
+  float: left;
+  height: 100px;
+  /* Espaçamento entre a imagem e o texto */
+  padding-right: 20px;
+  border-radius: 50px;
+}
+
+
+.text_card_drink {
+  padding-top: 5px;
+  /* Espaçamento entre o topo do texto e a imagem */
+  text-align: left;
+  margin-right: 3px;
+
+
+
+}
+.card_drink2 {
+  padding-top: 15px;
+  background-color: rgb(100, 98, 98);
+  color: white;
+  margin-top: 5px;
+  padding-bottom: 15px;
+
+
+
+}
+
+.img_drink2 {
+  float: left;
+  height: 100px;
+  /* Espaçamento entre a imagem e o texto */
+  padding-right: 20px;
+  border-radius: 50px;
+}
+
+
+.text_card_drink2 {
+  padding-top: 5px;
+  /* Espaçamento entre o topo do texto e a imagem */
+  text-align: left;
+  margin-right: 3px;
+
+
+
+}
