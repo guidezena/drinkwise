@@ -10,6 +10,7 @@ function Login() {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
    const [show, setShow] = useState(false)
+   const history = useState();
    
    async function handleLogin() {
       try {
@@ -23,7 +24,7 @@ function Login() {
          const data = await response.json();
          if (response.status === 200) {
             // Login bem-sucedido, redirecionar para a página principal
-            window.location.href = '/dish';
+            window.location.href = '/home';
             alert('login feito com sucesso')
          } else {
             // Login mal-sucedido, exibir mensagem de erro
@@ -31,7 +32,7 @@ function Login() {
          }
       } catch (error) {
          // Erro ao chamar a API, exibir mensagem de erro
-         alert('Erro ao fazer login');
+         alert('Credenciais incorretas');
       }
    }
 
@@ -41,6 +42,10 @@ function Login() {
 
 
    }
+   
+   const handleRegister = () => {
+      window.open('/Register');
+    };
 
    return (
       <div className="login">
@@ -93,7 +98,7 @@ function Login() {
 
             <h4>Não tenho conta!</h4>
 
-            <button type="submit">
+            <button onClick={handleRegister} type="submit">
                Cadastrar
             </button>
          </div>

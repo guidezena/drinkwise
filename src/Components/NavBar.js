@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { FaBars, Fabars, FaTimes } from "react-icons/fa";
+import logo from '../img/logodw.png'
 import "../Styles/main.css" ;
 
 function Navbar(){
@@ -9,7 +10,7 @@ function Navbar(){
     }
     return(
         <header>
-            <h3>Logo</h3>
+           <img className="logonav" src={logo}  style={{ width: '150px', height: '125px' }} />
             <nav ref={navRef}>
                 <a href="/#">Home</a>
                 <a href="/restaurant">Restaurantes</a>
