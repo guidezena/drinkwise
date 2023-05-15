@@ -18,6 +18,7 @@ function Dish() {
       <div>
         <Image></Image>
       </div>
+      
       <div>
         <Dish_Free></Dish_Free>
       </div>

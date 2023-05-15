@@ -1,0 +1,29 @@
+.inputRegister input  {
+    display: flex;
+    align-items: center;
+    color: gray;
+    background-color: #E1E1E6;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 5px;
+    width: 70%;
+    height: 50px;
+    border-radius: 5px;
+    align-items: center;
+    
+}
+    
+.select_register {
+    display: flex;
+    align-items: center;
+    color: gray;
+    background-color: #E1E1E6;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 5px;
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+    align-items: center;
+}
+

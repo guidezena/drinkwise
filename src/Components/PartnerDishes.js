@@ -7,7 +7,6 @@ function PartnerDishes() {
     return (
         <div class="grid-cardPartnerDish">
             <div class="cardPartnerDish">
-
                 <img src={imageCardPartnerDish} alt="Imagem 1" />
                 <h2>Macarrao com molho</h2>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>

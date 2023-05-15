@@ -7,6 +7,8 @@ import Register from "./Pages/Register";
 import Restaurant from "./Pages/Restaurant";
 import DishRestaurantPartnes from "./Pages/DishRestaurantPartnes";
 import DrinkPartner from "./Pages/DrinkPartner";
+import AdminDishFree from "./Pages/AdminDishFree"
+import AdminCategory from "./Components/AdminCategory";
 
 const Private = ({ Item }) => {
   const signed = false;
@@ -30,6 +32,11 @@ function App() {
         <Route path="/Restaurant" element={<Restaurant />} />
         <Route path="/DishRestaurantPartnes" element={<DishRestaurantPartnes />} />
         <Route path="/DrinkPartner" element={<DrinkPartner />} />
+        <Route path="/AdminDishFree" element={<AdminDishFree />} />
+        <Route path="/AdminCategory" element={<AdminCategory />} />
+
+
+        
       </Routes>
 
     </BrowserRouter>
