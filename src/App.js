@@ -9,6 +9,7 @@ import DishRestaurantPartnes from "./Pages/DishRestaurantPartnes";
 import DrinkPartner from "./Pages/DrinkPartner";
 import AdminDishFree from "./Pages/AdminDishFree"
 import AdminCategory from "./Components/AdminCategory";
+import  RegisterRestaurant from "./Components/AdminRestaurant";
 
 const Private = ({ Item }) => {
   const signed = false;
@@ -34,6 +35,8 @@ function App() {
         <Route path="/DrinkPartner" element={<DrinkPartner />} />
         <Route path="/AdminDishFree" element={<AdminDishFree />} />
         <Route path="/AdminCategory" element={<AdminCategory />} />
+        <Route path="/RegisterRestaurant" element={< RegisterRestaurant />} />
+        
 
 
         
