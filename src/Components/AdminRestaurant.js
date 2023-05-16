@@ -21,7 +21,7 @@ function AdminRestaurant() {
                 alert('Cadastro do restaurante feito com sucesso')
             } else {
                 alert('Nao foi possivel efetuar o cadastro');
-            }   a
+            }
         } catch (error) {
             // Erro ao chamar a API, exibir mensagem de erro
             console.log(error)
