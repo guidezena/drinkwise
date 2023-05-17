@@ -30,17 +30,29 @@ const Gallery = () => {
         {
             id: 5,
             imgSrc: Img4,
-        },{
+        }, {
             id: 6,
             imgSrc: Img3,
-        },{
+        }, {
             id: 7,
             imgSrc: Img2,
-        },{
+        }, {
             id: 8,
             imgSrc: Img4,
-        },{
+        }, {
             id: 9,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
+            imgSrc: Img2,
+        },
+        {
+            id: 2,
             imgSrc: Img2,
         },
         {
@@ -65,20 +77,22 @@ const Gallery = () => {
     }
     return (
         <>
-        <div className={model? "model open" : "model"}>
-            <img src= {tempimgSrc}/>
-            <CloseIcon onClick = {() => setModel(false)}/>
-        </div>
-            <div className='gallery'>
-                {data.map((item, index) => {
-                    return (
-                        <div className='pics' key={index} onClick={() => getImg(item.imgSrc)}>
-                            <img src={item.imgSrc} />
-                        </div>
-                    )
-                })}
+            <div className={model ? "model open" : "model"}>
+                <img src={tempimgSrc} />
+                <CloseIcon onClick={() => setModel(false)} />
             </div>
+            <div className='gallery'>
+                <div className='galleryBox'>
+                    {data.map((item, index) => {
+                        return (
+                            <div className='pics' key={index} onClick={() => getImg(item.imgSrc)}>
+                                <img src={item.imgSrc} />
+                            </div>
+                        )
+                    })}
+                </div>
 
+            </div>
         </>
 
     )

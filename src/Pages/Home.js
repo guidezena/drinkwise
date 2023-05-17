@@ -10,12 +10,7 @@ function Home() {
     return (
         <React.Fragment>
           <Navbar></Navbar>
-    
-          <div>
-            <Image></Image>
-          </div>
-          <div>
-    
+            <div>  
             <EatAndDrinks></EatAndDrinks>
           </div>
           <div>

@@ -15,9 +15,11 @@ import RegisterRestaurant from "./Components/AdminRestaurant";
 import RegisterDrink from "./Components/AdminDrinks";
 
 const Private = ({ Item }) => {
-  const signed = false;
-
-  return signed > 0 ? <Item /> : <Login />
+  
+  const token = window.localStorage.getItem("token");
+  const user = JSON.parse(atob(token.split('.')[1]))
+  return user ? <Item /> : <Login />
+  
 
 }
 
@@ -29,20 +31,23 @@ function App() {
     <BrowserRouter>
       <Routes>
        
-        <Route path="/" element={<Home />} />
-        <Route path="/Dish" element={<Dish />} />
-        <Route path="/Login" element={<Login />} />
+       
         <Route path="/Register" element={<Register />} />
-        <Route path="/Restaurant" element={<Restaurant />} />
-        <Route path="/DishRestaurantPartnes" element={<DishRestaurantPartnes />} />
-        <Route path="/DrinkPartner" element={<DrinkPartner />} />
+        <Route path="/Login" element={<Login />} />
 
+
+        <Route path="/" element={<Private Item={Home} />} />
+        <Route path="/Dish" element={<Private Item={Dish} />} />
+        <Route path="/Restaurant" element={<Private Item={Restaurant} />} />
+        <Route path="/DishRestaurantPartnes" element={<Private Item={DishRestaurantPartnes} />} />
+        <Route path="/DrinkPartner" element={<Private Item={DrinkPartner} />} />
+
+        <Route path="/AdminDishFree" element={<Private Item={AdminDishFree} />} />
+        <Route path="AdminCategory/" element={<Private Item={AdminCategory} />} />
+        <Route path="/RegisterRestaurant" element={<Private Item={RegisterRestaurant} />} />
+        <Route path="/RegisterDrink" element={<Private Item={RegisterDrink} />} />
         
-          
-        <Route path="/AdminDishFree" element={<AdminDishFree />} />
-        <Route path="/AdminCategory" element={<AdminCategory />} />
-        <Route path="/RegisterRestaurant" element={<RegisterRestaurant />} />
-        <Route path="/RegisterDrink" element={<RegisterDrink />} />
+
      
 
         

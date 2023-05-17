@@ -29,6 +29,7 @@ function InputDishFree() {
     function teste() {
         alert('teste')
     }
+    
     const [base64Image, setBase64Image] = useState('');
 
     const handleFileChange = (event) => {

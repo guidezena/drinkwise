@@ -24,8 +24,8 @@ function Login() {
          const data = await response.json();
          if (response.status === 200) {
             // Login bem-sucedido, redirecionar para a página principal
-            window.location.href = '/home';
-            alert('login feito com sucesso')
+            window.localStorage.setItem("token", data.token)
+            window.location.href = '/';
          } else {
             // Login mal-sucedido, exibir mensagem de erro
             alert('E-mail ou senha incorretos');

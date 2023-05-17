@@ -15,9 +15,7 @@ function Dish() {
 
       <Navbar></Navbar>
 
-      <div>
-        <Image></Image>
-      </div>
+    
       
       <div>
         <Dish_Free></Dish_Free>
