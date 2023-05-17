@@ -26,4 +26,20 @@
     border-radius: 5px;
     align-items: center;
 }
-
+.buttonInput{
+    width: 25%;
+    background-color:#e9e9e9;
+    color: black;
+    font-weight: 800;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 5px;
+   
+    outline-width: 0;
+}
+.buttonInput:hover {
+    background-color: #F1C116;
+    color: #EFF2F5;
+    cursor: pointer;
+}

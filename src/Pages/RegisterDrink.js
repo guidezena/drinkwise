@@ -1,19 +1,20 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import AdminRestaurant from "../Components/AdminRestaurant";
+import AdminDrinks from "../Components/AdminDrinks";
 
 
 
-function RegisterRestaurant() {
+function RegisterDrink() {
     return (
         <React.Fragment>
             <div>
                 <Navbar></Navbar>
             </div>
-           <div>
-            <AdminRestaurant></AdminRestaurant>
-           </div>
+            <div>
+                <AdminDrinks></AdminDrinks>
+            </div>
+
         </React.Fragment>
     );
 }
-export default RegisterRestaurant;
+export default RegisterDrink;

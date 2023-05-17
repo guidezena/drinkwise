@@ -4,8 +4,19 @@ import React, { useState } from 'react';
 function AdminCategory() {
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
+    const [base64Image, setBase64Image] = useState('');
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
+    reader.onload = (e) => {
+      const base64 = reader.result;
+      setBase64Image(base64);
+    };
+
+    reader.readAsDataURL(file);
+  };
     async function handleSubmit() {
         try {
             const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/category', {
@@ -28,18 +39,24 @@ function AdminCategory() {
         }
     }
     return (
-        <div>
-            <label htmlFor="name">Nome da Categoria:</label>
-            <input
-                type="text"
-                placeholder="Digite seu nome"
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
-            <label htmlFor="image">Imagem:</label>
-            <input type="file" id="image" name="image" onChange={e => setImage(e.target.value)} />
+        <div className='div_add_dish'>
+            <div>
+                <h1>Cadastro de categorias</h1>
+            </div>
+            <div className='inputRegister' >
+                <label htmlFor="name">Nome da Categoria:</label>
+                <input
+                    type="text"
+                    placeholder="Digite seu nome"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+                <label htmlFor="image">Imagem:</label>
+                <input type="file" id="image" name="image" onChange={handleFileChange} />
+            </div>
 
-            <button type="submit" onClick={handleSubmit}>Salvar</button>
+
+            <button type="submit" className="buttonInput" onClick={handleSubmit}>Salvar</button>
         </div>
     );
 

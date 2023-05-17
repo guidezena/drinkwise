@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import InputDishFree from "../Components/InputDishFree";
+import AdminDish from "../Components/AdminDish";
 
 
 
@@ -10,7 +10,9 @@ function AdminDishFree() {
             <div>
                 <Navbar></Navbar>
             </div>
-            <InputDishFree></InputDishFree>
+            <div>
+                <AdminDish></AdminDish>
+            </div>
         </React.Fragment>
     );
 }

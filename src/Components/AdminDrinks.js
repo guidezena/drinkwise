@@ -1,57 +1,53 @@
 
 import React, { useState } from 'react';
+import "../Styles/adminDishFree.css"
 
-function AdminRestaurant() {
+function AdminDrinks() {
+
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
-    const [address, setAddress] = useState("")
+
 
     async function handleSubmit() {
         try {
-            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/restaurant', {
+            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/drinks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, image, description, address })
+                body: JSON.stringify({ name, image, description })
             });
 
             if (response.status === 201) {
-                alert('Cadastro do restaurante feito com sucesso')
+                alert('Cadastro de Bebidas feito com sucesso')
             } else {
-                alert('Nao foi possivel efetuar o cadastro');
+                alert('Nao foi possivel efetuar o cadastro de bebida');
             }
         } catch (error) {
             // Erro ao chamar a API, exibir mensagem de erro
             console.log(error)
             alert('Erro ao fazer o cadastro');
         }
+        
     }
+   
     return (
         <div className='div_add_dish'>
             <div>
-                <h1>
-                    Cadastro restaurante
-                </h1>
+                <h1>Cadastro de bebidas</h1>
             </div>
-            <div className='inputRegister'>
-                <label htmlFor="name">Nome Restaurante</label>
+            <div className="inputRegister">
                 <input
                     type="text"
                     placeholder="Digite seu nome"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <label htmlFor="address">Endereço Restaurant</label>
-                <input
-                    type="text"
-                    placeholder="Digite o endereço"
-                    value={address}
-                    onChange={e => setAddress(e.target.value)}
-                />
-                <label htmlFor="image">Imagem Restaurante</label>
+
+                <label htmlFor="image">Imagem:</label>
                 <input type="file" id="image" name="image" onChange={e => setImage(e.target.value)} />
+
                 <label>
                     Descrição do Restaurante
                     <input placeholder="Descrição Prato"
@@ -60,11 +56,12 @@ function AdminRestaurant() {
                         onChange={e => setDescription(e.target.value)}
                     />
                 </label>
-            </div>
 
-            <button type="submit" className="buttonInput" onClick={handleSubmit}>Salvar</button>
+
+            </div>
+            <button className='buttonInput' type="submit" onClick={handleSubmit}>Salvar</button>
         </div>
     );
 
 }
-export default AdminRestaurant;
+export default AdminDrinks;

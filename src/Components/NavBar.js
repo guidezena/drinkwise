@@ -1,29 +1,39 @@
 import { useRef } from "react";
 import { FaBars, Fabars, FaTimes } from "react-icons/fa";
-import logo from '../img/logodw.png'
-import "../Styles/main.css" ;
+import "../Styles/main.css";
 
-function Navbar(){
+function Navbar() {
     const navRef = useRef()
     const showNavBar = () => {
         navRef.current.classList.toggle("responsive_nav")
     }
-    return(
+    return (
         <header>
-           <img className="logonav" src={logo}  style={{ width: '150px', height: '125px' }} />
+            <div className="titlenavbar">
+                <h1>
+                    DrinkWise
+                </h1>
+            </div>
             <nav ref={navRef}>
-                <a href="/#">Home</a>
+
+
+                
+                <a href="/home">Home</a>
                 <a href="/restaurant">Restaurantes</a>
                 <a href="/dish">Pratos</a>
-                <a href="/#">Home</a>
-                <button  className="nav-btn nav-close-btn" onClick={showNavBar}>
-                    <FaTimes/>
+                <a href="/AdminDishFree">Registrar pratos</a>
+                <a href="/registerRestaurant">Registrar Restaurante</a>
+                <a href="/admincategory">Registrar categoria</a>
+                <a href="/registerdrink">Registrar Drinks</a>
+                <button className="nav-btn nav-close-btn" onClick={showNavBar}>
+                    <FaTimes />
                 </button>
             </nav>
             <button className="nav-btn" onClick={showNavBar}>
-                <FaBars/>
+                <FaBars />
             </button>
+
         </header>
-    ); 
+    );
 }
 export default Navbar
