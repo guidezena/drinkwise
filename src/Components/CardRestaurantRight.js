@@ -5,10 +5,10 @@ import image from '../img/restaurante2.png'
 function CardRestaurantRight() {
     return (
         <div className='card_rigth'>
-            <img className='img_rigth'
-                src={image}
-                alt="Imagem " />
             <div className='text_card_rigth'>
+                <img className='img_rigth'
+                    src={image}
+                    alt="Imagem " />
                 <h4>
                     Restaurante 1
                 </h4>

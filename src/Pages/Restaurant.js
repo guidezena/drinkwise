@@ -14,11 +14,12 @@ function Restaurant() {
                 <Image></Image>
             </div>
             <div>
-                <CardRestaurantRight></CardRestaurantRight>
-            </div>
-            <div>
                 <CardRestaurantLeft></CardRestaurantLeft>
             </div>
+            <div>
+                <CardRestaurantRight></CardRestaurantRight>
+            </div>
+           
         </React.Fragment>
     );
 }

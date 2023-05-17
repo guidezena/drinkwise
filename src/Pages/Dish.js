@@ -1,9 +1,6 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import Image from "../Components/Image";
 import Dish_Free from "../Components/Dish_Free";
-import Search from "../Components/Search";
-
 import Drink from "../Components/Drink";
 import Drink2 from "../Components/Drink2";
 
@@ -14,14 +11,8 @@ function Dish() {
     <React.Fragment>
 
       <Navbar></Navbar>
-
-    
-      
       <div>
         <Dish_Free></Dish_Free>
-      </div>
-      <div>
-        <Search></Search>
       </div>
       <div>
         <Drink></Drink>

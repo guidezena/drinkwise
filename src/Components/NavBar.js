@@ -24,7 +24,7 @@ function Navbar() {
                 </h1>
             </div>
             <nav ref={navRef}>
-                <a href="/home">Home</a>
+                <a href="/">Home</a>
                 <a href="/restaurant">Restaurantes</a>
                 <a href="/dish">Pratos</a>
                
