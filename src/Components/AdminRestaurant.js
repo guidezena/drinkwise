@@ -6,18 +6,39 @@ function AdminRestaurant() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [address, setAddress] = useState("")
+    const [base64Image, setBase64Image] = useState('');
+    const [id_user, set_id_user] = useState('');
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const base64 = reader.result;
+            setBase64Image(base64);
+        };
+
+        reader.readAsDataURL(file);
+    };
 
     async function handleSubmit() {
+        const token = window.localStorage.getItem("token");
+        const user = JSON.parse(atob(token.split('.')[1]))
+
+        
         try {
             const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/restaurant', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, image, description, address })
+                body: JSON.stringify({ name, image:base64Image, description, address, id_user:user.user_id })
             });
-
+           
+            const data = await response.json();
+            console.log(data)
             if (response.status === 201) {
+                
                 alert('Cadastro do restaurante feito com sucesso')
             } else {
                 alert('Nao foi possivel efetuar o cadastro');
@@ -51,14 +72,15 @@ function AdminRestaurant() {
                     onChange={e => setAddress(e.target.value)}
                 />
                 <label htmlFor="image">Imagem Restaurante</label>
-                <input type="file" id="image" name="image" onChange={e => setImage(e.target.value)} />
+                <input type="file" id="image" name="image" src='' onChange={handleFileChange} />
                 <label>
                     Descrição do Restaurante
-                    <input placeholder="Descrição Prato"
-                        type="text"
-                        value=""
-                        onChange={e => setDescription(e.target.value)}
-                    />
+                    <input
+                    type="text"
+                    placeholder="Digite a descrição do restaurante"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                />
                 </label>
             </div>
 

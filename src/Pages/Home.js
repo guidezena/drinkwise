@@ -1,7 +1,5 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import Image from "../Components/Image";
-import Hr2 from "../Components/Hr2";
 import EatAndDrinks from "../Components/EatAndDrinks";
 import Gallery from "../Components/Gallery";
 

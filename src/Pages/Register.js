@@ -16,7 +16,7 @@ function Register() {
 
     async function handleRegister() {
         try {
-            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/signup',{
+            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/users',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

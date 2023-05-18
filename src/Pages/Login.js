@@ -44,7 +44,7 @@ function Login() {
    }
    
    const handleRegister = () => {
-      window.open('/Register');
+      window.open('/usersm');
     };
 
    return (
