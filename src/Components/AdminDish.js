@@ -6,7 +6,7 @@ function InputDishFree() {
     const [Restaurant, setRestaurant] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/category");
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
             const jsonData = await response.json();
             setData(jsonData);
         };

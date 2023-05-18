@@ -26,6 +26,7 @@ function CardRestaurantRight() {
 
 
         <>
+           
             {
                 data.map((item) => (
                     <div className='card_rigth'>

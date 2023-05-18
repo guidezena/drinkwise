@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
-import Dish from "./Pages/Dish";
+import Categories from "./Pages/Categories";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Restaurant from "./Pages/Restaurant";
@@ -9,10 +9,11 @@ import DishRestaurantPartnes from "./Pages/DishRestaurantPartnes";
 import DrinkPartner from "./Pages/DrinkPartner";
 import AdminDishFree from "./Pages/AdminDishFree"
 
-
+import Dishes from "./Components/Dish";
 import AdminCategory from "./Components/AdminCategory";
 import RegisterRestaurant from "./Components/AdminRestaurant";
 import RegisterDrink from "./Components/AdminDrinks";
+
 
 const Private = ({ Item }) => {
   
@@ -37,7 +38,8 @@ function App() {
 
 
         <Route path="/" element={<Private Item={Home} />} />
-        <Route path="/Dish" element={<Private Item={Dish} />} />
+        <Route path="/Category" element={<Private Item={Categories} />} />
+        <Route path="/Dishes" element={<Private Item={Dishes} />} />
         <Route path="/Restaurant" element={<Private Item={Restaurant} />} />
         <Route path="/DishRestaurantPartnes" element={<Private Item={DishRestaurantPartnes} />} />
         <Route path="/DrinkPartner" element={<Private Item={DrinkPartner} />} />

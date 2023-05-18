@@ -26,7 +26,9 @@ function Navbar() {
             <nav ref={navRef}>
                 <a href="/">Home</a>
                 <a href="/restaurant">Restaurantes</a>
-                <a href="/dish">Pratos</a>
+                <a href="/category">Categorias</a>
+                <a href="/dishes">Pratos</a>
+                
                
                 
                 {isAdmin && (
