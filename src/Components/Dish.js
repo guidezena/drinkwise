@@ -3,7 +3,7 @@ import "../Styles/card.css"
 
 
 
-function getDishes() {
+function GetDishes() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -26,15 +26,23 @@ function getDishes() {
                 ))}
             </div> 
     */
-  
+
     return (
         <div class="main">
-            {data.map((item) => (
-                <ul class="cards">
+            {data.map((item) => {
+                console.log(item.image == "")
+                return <ul class="cards">
                     <li class="cards_item">
-                        <div class="card">
+                        <div class="card" onClick={() => {
+                            window.location.href = `/AdminDishFree/${item.ID}`
+                        }}>
                             <div class="card_image">
-                                <img src={`${item.image}`} alt="" />
+                                {item.image == "" && (
+                                    <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                                )}
+                                {item.image && (
+                                    <img src={`${item.image}`} alt="" />
+                                )}
                                 <span class="card_price"><span>$</span>9</span>
                             </div>
                             <div class="card_content">
@@ -48,11 +56,11 @@ function getDishes() {
                         </div>
                     </li>
                 </ul>
-            ))}
+            })}
         </div>
 
 
 
     );
 }
-export default getDishes
+export default GetDishes

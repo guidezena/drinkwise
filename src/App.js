@@ -47,7 +47,10 @@ function App() {
         <Route path="/AdminDishFree" element={<Private Item={AdminDishFree} />} />
         <Route path="AdminCategory/" element={<Private Item={AdminCategory} />} />
         <Route path="/RegisterRestaurant" element={<Private Item={RegisterRestaurant} />} />
-        <Route path="/RegisterDrink" element={<Private Item={RegisterDrink} />} />
+        <Route path="/RegisterDrink" element={<Private Item={RegisterDrink} />} />  
+
+
+        <Route path="/AdminDishFree/:id" element={<Private Item={AdminDishFree} />} />
         
 
      

@@ -11,9 +11,7 @@ function Dishes() {
     <React.Fragment>
       <div>
         <Navbar></Navbar>
-
       </div>
-
       <div>
         <Dish></Dish>
       </div>

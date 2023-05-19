@@ -6,7 +6,7 @@ function CardRestaurantRight() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurant");
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
             const jsonData = await response.json();
             setData(jsonData.reverse());
         };
