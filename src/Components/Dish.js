@@ -32,29 +32,32 @@ function GetDishes() {
             {data.map((item) => {
                 console.log(item.image == "")
                 return <ul class="cards">
-                    <li class="cards_item">
-                        <div class="card" onClick={() => {
-                            window.location.href = `/AdminDishFree/${item.ID}`
-                        }}>
-                            <div class="card_image">
-                                {item.image == "" && (
-                                    <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-                                )}
-                                {item.image && (
-                                    <img src={`${item.image}`} alt="" />
-                                )}
-                                <span class="card_price"><span>$</span>9</span>
-                            </div>
-                            <div class="card_content">
-                                <h2 class="card_title">{item.name}</h2>
-                                <div class="card_text">
-                                    <p>{
-                                        item.description}
-                                    </p>
+                    <div className="cards_item">
+                        <li>
+                            <div class="card" onClick={() => {
+                                window.location.href = `/AdminDishFree/${item.ID}`
+                            }}>
+                                <div class="card_image">
+                                    {item.image == "" && (
+                                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                                    )}
+                                    {item.image && (
+                                        <img src={`${item.image}`} alt="" />
+                                    )}
+                                    <span class="card_price"><span>$</span>9</span>
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">{item.name}</h2>
+                                    <div class="card_text">
+                                        <p>{
+                                            item.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    </div>
+
                 </ul>
             })}
         </div>

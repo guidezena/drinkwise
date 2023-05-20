@@ -9,10 +9,10 @@ import DishRestaurantPartnes from "./Pages/DishRestaurantPartnes";
 import DrinkPartner from "./Pages/DrinkPartner";
 import AdminDishFree from "./Pages/AdminDishFree"
 
-import Dishes from "./Components/Dish";
-import AdminCategory from "./Components/AdminCategory";
-import RegisterRestaurant from "./Components/AdminRestaurant";
-import RegisterDrink from "./Components/AdminDrinks";
+import Dishes from "./Pages/Dishes";
+import AdminCategory from "./Pages/RegisterCategory";
+import RegisterRestaurant from "./Pages/RegisterRestaurant";
+import RegisterDrink from "./Pages/RegisterDrink";
 
 
 const Private = ({ Item }) => {
