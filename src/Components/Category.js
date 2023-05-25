@@ -14,30 +14,26 @@ function Dish_Free() {
 
         fetchData();
     }, []);
-    /** <div className='all_card_dish'>
-                {data.map((item) => (
-                    <div class="card_dish_free">
-                        <h4>{item.name}</h4>
-                        <img src={`${item.image}`} alt="Carne bovina" />
     
-                        <p><button className='buttonCard_dish_free'>Buscar</button></p>
-                    </div>
-                ))}
-            </div> */
     return (
         <div class="center">
-            {data.map((item) => (
-                <div class="article-card">
+            {data.map((item) => {
+                return <div class="article-card" onClick={() => {
+                    window.location.href = `/AdminCategory/${item.ID}`
+                }}>
+                    
+                    {item.image == "" && (
+                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                    )}
+                    {item.image && (
+                        <img src={`${item.image}`} alt="" />
+                    )}
                     <div class="content">
                         <p class="title">{item.name}</p>
                     </div>
-                    <img src={`${item.image}`} alt="" />
                 </div>
-            ))}
+            })}
         </div>
-
-
-
     );
 }
 export default Dish_Free

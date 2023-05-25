@@ -95,6 +95,7 @@ function InputDishFree() {
 
         fetchData();
     }, []);
+
     const handleCategoryChange = (event) => {
         const selectedCategoryId = parseInt(event.target.value);
         set_category_id(selectedCategoryId);
@@ -106,6 +107,7 @@ function InputDishFree() {
         set_restaurant_id(selectedRestaurantId);
 
     };
+    
 
 
     const [base64Image, setBase64Image] = useState('');
@@ -121,13 +123,35 @@ function InputDishFree() {
         reader.readAsDataURL(file);
     };
 
+
+    async function handleDelete() {
+        if (!id) return;
+        try {
+          const response = await fetch(
+            `https://mighty-lowlands-25016.herokuapp.com/dishes/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
+          if (response.status === 200) {
+            alert("Prato excluido com sucesso");
+            window.location.href = `/dishes/`
+          } else {
+            alert("Não foi possível excluir a categoria");
+          }
+        } catch (error) {
+          console.log(error);
+          alert("Erro ao excluir a categoria");
+        }
+      }
+
     return (
         <div className='div_add_dish'>
             <div>
                 <h1>Cadastro de pratos</h1>
             </div>
             <div className="inputRegister">
-                <input
+                <input  
                     type="text"
                     placeholder="Digite nome do prato"
                     value={name}
@@ -159,9 +183,9 @@ function InputDishFree() {
                     <input type="file" name="myImage" accept="image/*" onChange={handleFileChange} />
                 </label>
                 <button className="buttonInput" onClick={handleSubmit}>Salvar</button>
+                <button className="buttonInput" onClick={handleDelete}>Deletar</button>
             </div>
         </div>
     );
-
 }
 export default InputDishFree;

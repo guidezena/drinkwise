@@ -49,15 +49,13 @@ function AdminDrinks() {
                 <input type="file" id="image" name="image" onChange={e => setImage(e.target.value)} />
 
                 <label>
-                    Descrição do Restaurante
+                    Descrição da da bebida
                     <input placeholder="Descrição Prato"
                         type="text"
-                        value=""
+                        value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
                 </label>
-
-
             </div>
             <button className='buttonInput' type="submit" onClick={handleSubmit}>Salvar</button>
         </div>

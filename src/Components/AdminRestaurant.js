@@ -1,5 +1,5 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom';
 
 function AdminRestaurant() {
     const [name, setName] = useState("")
@@ -8,6 +8,9 @@ function AdminRestaurant() {
     const [address, setAddress] = useState("")
     const [base64Image, setBase64Image] = useState('');
     const [id_user, set_id_user] = useState('');
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+    
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -24,23 +27,29 @@ function AdminRestaurant() {
     async function handleSubmit() {
         const token = window.localStorage.getItem("token");
         const user = JSON.parse(atob(token.split('.')[1]))
-
-        
+        let url = 'https://mighty-lowlands-25016.herokuapp.com/restaurants';
+        let method = 'POST'
+        if(id){
+            method = 'PUT'
+            url = url + `/${id}`
+        }
         try {
-            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/restaurants', {
-                method: 'POST',
+            const response = await fetch(url, {
+                method: method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, image:base64Image, description, address, id_user:user.user_id })
+                body: JSON.stringify({ name, image: base64Image, description, address, id_user: user.user_id })
             });
-           
+
             const data = await response.json();
             console.log(data)
             if (response.status === 201) {
-                
                 alert('Cadastro do restaurante feito com sucesso')
-            } else {
+            } else if (response.status === 200) {
+                alert('Restaurante atualizado com sucesso')
+            }
+            else {
                 alert('Nao foi possivel efetuar o cadastro');
             }
         } catch (error) {
@@ -49,6 +58,51 @@ function AdminRestaurant() {
             alert('Erro ao fazer o cadastro');
         }
     }
+    useEffect(() => {
+        if (!id) return
+        const fetchData = async () => {
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/restaurants/${id}`);
+            const jsonData = await response.json();
+            setName(jsonData.name);
+            setDescription(jsonData.description);
+            setAddress(jsonData.address)
+            setImage(jsonData.image);
+        };
+
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
+            const jsonData = await response.json();
+            setData(jsonData);
+        };
+
+        fetchData();
+    }, []);
+
+    async function handleDelete() {
+        if (!id) return;
+        try {
+          const response = await fetch(
+            `https://mighty-lowlands-25016.herokuapp.com/restaurants/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
+          if (response.status === 200) {
+            alert("Restaurante excluido com sucesso");
+            window.location.href = `/restaurant/`
+          } else {
+            alert("Não foi possível excluir a categoria");
+          }
+        } catch (error) {
+          console.log(error);
+          alert("Erro ao excluir a categoria");
+        }
+      }
+
     return (
         <div className='div_add_dish'>
             <div>
@@ -76,15 +130,16 @@ function AdminRestaurant() {
                 <label>
                     Descrição do Restaurante
                     <input
-                    type="text"
-                    placeholder="Digite a descrição do restaurante"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                />
+                        type="text"
+                        placeholder="Digite a descrição do restaurante"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                    />
                 </label>
             </div>
 
             <button type="submit" className="buttonInput" onClick={handleSubmit}>Salvar</button>
+            <button type="submit" className="buttonInput" onClick={handleDelete}>Deletar</button>
         </div>
     );
 
