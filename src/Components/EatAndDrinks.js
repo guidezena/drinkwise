@@ -9,9 +9,8 @@ function EatAndDrink() {
         <div className='gridItems'>
             <div className='itens-center'>
                 <h4>EAT AND DRINK</h4>
-                
+                <hr></hr>
             </div>
-            <hr></hr>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0,5rem' }}>
 
                 <div>

@@ -14,26 +14,29 @@ function Dish_Free() {
 
         fetchData();
     }, []);
-    
+
     return (
-        <div class="center">
-            {data.map((item) => {
-                return <div class="article-card" onClick={() => {
-                    window.location.href = `/AdminCategory/${item.ID}`
-                }}>
-                    
-                    {item.image == "" && (
-                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-                    )}
-                    {item.image && (
-                        <img src={`${item.image}`} alt="" />
-                    )}
-                    <div class="content">
-                        <p class="title">{item.name}</p>
+        <div className="adjust_padding">
+            <div class="center">
+                {data.map((item) => {
+                    return <div class="article-card" onClick={() => {
+                        window.location.href = `/AdminCategory/${item.ID}`
+                    }}>
+
+                        {item.image == "" && (
+                            <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                        )}
+                        {item.image && (
+                            <img src={`${item.image}`} alt="" />
+                        )}
+                        <div class="content">
+                            <p class="title">{item.name}</p>
+                        </div>
                     </div>
-                </div>
-            })}
+                })}
+            </div>
         </div>
+
     );
 }
 export default Dish_Free

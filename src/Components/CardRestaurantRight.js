@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Restaurant.css"
 import image from '../img/restaurante2.png'
+import { ClassNames } from "@emotion/react";
 
 function CardRestaurantRight() {
     const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ function CardRestaurantRight() {
             </div>*/
 
 
-        <>
+        <div className="restaurant_adjust">
             {
                 data.map((item) => {
                     return <>
@@ -42,23 +43,20 @@ function CardRestaurantRight() {
                                     )}
                                 </div>
 
-                                <svg class="card__svg" viewBox="0 0 800 500">
-
-                                    <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333" />
-                                    <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
-                                </svg>
-
                                 <div class="card__content">
-                                    <h1 class="card__title">{item.name}</h1>
-                                    <h5>{item.description}</h5>
-                                    <p>{item.address}</p>
+                                   
+                                    <h1 class="card__title"> {item.name}</h1>
+                                    
+                                    <h3>{item.address}</h3>
+                                    
+                                    <p>{item.description}</p>
                                 </div>
                             </div>
 
                         </div>
                     </>
                 })}
-        </>
+        </div>
     );
 
 }

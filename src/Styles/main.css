@@ -6,8 +6,14 @@
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
     
+    
    
     
+}
+body{
+    background-color: #ffffff;
+    padding-left: 3%; /* Espaçamento à esquerda */
+    padding-right: 3%; /* Espaçamento à direita */
 }
 .titlenavbar h1 {
     font-family: 'Playfair Display', serif;

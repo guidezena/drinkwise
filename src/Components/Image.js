@@ -1,21 +1,23 @@
 import React from 'react';
-import myImage from '../img/padrao.avif'
-import Card from './Card';
+import myImage from '../img/food-meal-restaurant-dish.jpg'
 import "../Styles/card.css"
 
 
 function ImageFragment() {
-    const myImageElement = new Image();
-    myImageElement.src = myImage;
     return (
-        <div className='container' style={{ position: 'relative'}}>
-            <img className="home-image" src={myImageElement.src} alt='My Image' style={{ width: '100%', height: '850px' }} />
+        <>
+            <section>
+                <h1 className='h1'>Drinkwise</h1>
+                <div class="content">
+                    <p className='p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, laborum suscipit doloremque, expedita voluptatum maiores corporis modi assumenda esse consectetur error nulla, vero alias.</p><a href="/dishes">Ver pratos</a>
+                </div>
+                <div class="img"><img className='adjust_image' src = {myImage}/></div>
+            </section>
 
-           
-            
-        </div>
-        
+        </>
+
     );
+
 }
 
 export default ImageFragment;

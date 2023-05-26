@@ -1,9 +1,21 @@
 import React, { useState } from 'react'
-import Img1 from '../img/img1.jpg'
-import Img2 from '../img/img2.jpg'
-import Img3 from '../img/img3.jpg'
-import Img4 from '../img/img4.jpg'
-import Img5 from '../img/img5.jpg'
+import Img1 from '../img/imagem1.jpg'
+import Img2 from '../img/imagem2.jpg'
+import Img3 from '../img/imagem3.webp'
+import Img4 from '../img/imagem4.jpeg'
+import Img5 from '../img/imagem5.jpg'
+import Img6 from '../img/imagem6.jpeg'
+import Img7 from '../img/imagem7.jpg'
+import Img8 from '../img/imagem8.webp'
+import Img9 from '../img/imagem9.webp'
+import Img10 from '../img/imagem10.jpeg'
+import Img11 from '../img/imagem11.jpg'
+import Img12 from '../img/imagem12.jpeg'
+import Img13 from '../img/imagem13.jpg'
+import Img14 from '../img/imagem14.jpg'
+import Img15 from '../img/imagem15.jpg'
+
+
 import "../Styles/gallery.css"
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -13,7 +25,7 @@ const Gallery = () => {
     let data = [
         {
             id: 1,
-            imgSrc: Img2,
+            imgSrc: Img1,
         },
         {
             id: 2,
@@ -25,49 +37,64 @@ const Gallery = () => {
         },
         {
             id: 4,
-            imgSrc: Img3,
+            imgSrc: Img4,
         },
         {
             id: 5,
-            imgSrc: Img4,
+            imgSrc: Img5,
         }, {
             id: 6,
-            imgSrc: Img3,
+            imgSrc: Img6,
         }, {
             id: 7,
-            imgSrc: Img2,
+            imgSrc: Img7,
         }, {
             id: 8,
-            imgSrc: Img4,
+            imgSrc: Img8,
         }, {
             id: 9,
-            imgSrc: Img2,
+            imgSrc: Img9,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 10,
+            imgSrc: Img10,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 11,
+            imgSrc: Img11,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 12,
+            imgSrc: Img12,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 13,
+            imgSrc: Img13,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 14,
+            imgSrc: Img14,
         },
         {
-            id: 2,
-            imgSrc: Img2,
+            id: 15,
+            imgSrc: Img15,
+        }, {
+            id: 6,
+            imgSrc: Img6,
+        }, {
+            id: 7,
+            imgSrc: Img7,
+        }, {
+            id: 8,
+            imgSrc: Img8,
+        }, {
+            id: 9,
+            imgSrc: Img9,
         },
-
+        {
+            id: 10,
+            imgSrc: Img10,
+        },
     ]
     const [model, setModel] = useState(false);
     const [tempimgSrc, setTempImgSrc] = useState('')
