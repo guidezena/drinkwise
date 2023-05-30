@@ -15,8 +15,6 @@ function InputDishFree() {
     const { id } = useParams();
 
     async function handleSubmit() {
-        //const token = window.localStorage.getItem("token");
-        //const user = JSON.parse(atob(token.split('.')[1]))
         let url = 'https://mighty-lowlands-25016.herokuapp.com/dishes';
         let method = 'POST'
         if (id) {
