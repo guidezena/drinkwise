@@ -52,7 +52,7 @@ function AdminCategory() {
             }
         } catch (error) {
             // Erro ao chamar a API, exibir mensagem de erro
-            console.log(error)
+            
             alert('Erro ao fazer o cadastro');
         }
     }
@@ -66,7 +66,8 @@ function AdminCategory() {
               method: "DELETE",
             }
           );
-          if (response.status === 200) {
+          const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
+          if (response.status === 200 && shouldDelete ) {
             alert("Categoria excluída com sucesso");
             // Redirecionar ou atualizar a lista de categorias após a exclusão
             window.location.href = `/category/`

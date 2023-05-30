@@ -14,7 +14,7 @@ function Navbar() {
         const token = window.localStorage.getItem("token");
         const user = JSON.parse(atob(token.split('.')[1]))
         setIsAdmin(user.is_admin)
-        console.log(user)
+        
     }, [])
     return (
         <header>
@@ -25,12 +25,12 @@ function Navbar() {
             </div>
             <nav ref={navRef}>
                 <a href="/">Home</a>
-                <a href="/restaurant">Restaurantes</a>
-                <a href="/category">Categorias</a>
                 <a href="/dishes">Pratos</a>
+                <a href="/restaurant">Restaurantes</a>
+                
                 
                
-                
+
                 {isAdmin && (
                     <>
                         <a href="/AdminDishFree">Registrar pratos</a>
@@ -51,7 +51,6 @@ function Navbar() {
             <button className="nav-btn" onClick={showNavBar}>
                 <FaBars />
             </button>
-
         </header>
     );
 }

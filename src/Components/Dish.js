@@ -14,6 +14,13 @@ function GetDishes() {
 
         fetchData();
     }, []);
+    const [isAdmin, setIsAdmin] = useState(false)
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        const user = JSON.parse(atob(token.split('.')[1]))
+        setIsAdmin(user.is_admin)
+
+    }, [])
     /*
            <div className='all_card_dish'>
                 {data.map((item) => (
@@ -26,17 +33,13 @@ function GetDishes() {
                 ))}
             </div> 
     */
-
     return (
         <div class="main">
             {data.map((item) => {
-                console.log(item.image == "")
                 return <div>
-                    <ul class="cards">
-                        <li class="cards_item">
-                            <div class="card" onClick={() => {
-                                window.location.href = `/AdminDishFree/${item.ID}`
-                            }}>
+                    <div class="cards">
+                        <div class="cards_item">
+                            <div class="card" >
                                 <div class="card_image">
                                     {item.image == "" && (
                                         <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
@@ -52,18 +55,28 @@ function GetDishes() {
                                         <p>{
                                             item.description}
                                         </p>
+                                        <button className="buttonPartnerDish" onClick={() => {
+                                            {
+                                                isAdmin && (
+                                                    window.location.href = `/AdminDishFree/${item.ID}`
+                                                )
+                                            }
+                                            {
+                                                !isAdmin && (
+                                                    window.location.href = `/`
+                                                )
+                                            }
+
+                                        }}>Bebidas</button>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
 
             })}
         </div>
-
-
-
     );
 }
 export default GetDishes

@@ -91,7 +91,8 @@ function AdminRestaurant() {
               method: "DELETE",
             }
           );
-          if (response.status === 200) {
+          const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
+          if (response.status === 200 && shouldDelete) {
             alert("Restaurante excluido com sucesso");
             window.location.href = `/restaurant/`
           } else {

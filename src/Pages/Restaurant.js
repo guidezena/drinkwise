@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import Image from "../Components/Image";
+import ImageRestaurant from "../Components/ImageRestaurant";
 import CardRestaurantRight from "../Components/CardRestaurantRight";
-import CardRestaurantLeft from "../Components/CardRestaurantLeft";
+import EatAndDrink from "../Components/EatAndDrinks";
 
 
 function Restaurant() {
@@ -11,10 +11,10 @@ function Restaurant() {
             <Navbar></Navbar>
 
             <div>
-                <Image></Image>
+                <ImageRestaurant></ImageRestaurant>
             </div>
             <div>
-                <CardRestaurantLeft></CardRestaurantLeft>
+                <EatAndDrink></EatAndDrink>
             </div>
             <div>
                 <CardRestaurantRight></CardRestaurantRight>

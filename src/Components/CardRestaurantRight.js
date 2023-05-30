@@ -14,50 +14,49 @@ function CardRestaurantRight() {
 
         fetchData();
     }, []);
+    const [isAdmin, setIsAdmin] = useState(false)
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        const user = JSON.parse(atob(token.split('.')[1]))
+        setIsAdmin(user.is_admin)
+
+    }, [])
 
 
     return (
-        /* {data.map((item) => (
-            <div class="card_dish_free">
-                <h4>{item.name}</h4>
-                <img src={`${item.image}`} alt="Carne bovina" />
-
-                <p><button className='buttonCard_dish_free'>Buscar</button></p>
-            </div>*/
-
-
         <div className="restaurant_adjust">
-            {
-                data.map((item) => {
-                    return <>
-                        <div class="container_restaurant">
-                            <div class="card_restaurant" onClick={() => {
-                                window.location = `/registerRestaurant/${item.ID}`
-                            }}>
-                                <div class="card__image-container">
-                                    {item.image == "" && (
-                                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-                                    )}
-                                    {item.image && (
-                                        <img src={`${item.image}`} alt="" />
-                                    )}
-                                </div>
-
-                                <div class="card__content">
-                                   
-                                    <h1 class="card__title"> {item.name}</h1>
-                                    
-                                    <h3>{item.address}</h3>
-                                    
-                                    <p>{item.description}</p>
-                                </div>
-                            </div>
-
+            {data.map((item) => (
+                <div class="container_restaurant">
+                    <div class="card_restaurant" onClick={() => {
+                            !isAdmin && (
+                                window.location = `/dishes/restaurant/${item.ID}`                                
+                            )
+                        }}>
+                        <div class="card__image-container">
+                            {item.image == "" && (
+                                <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                            )}
+                            {item.image && (
+                                <img src={`${item.image}`} alt="" />
+                            )}
                         </div>
-                    </>
-                })}
+
+                        <div class="card__content">
+                            <h1 class="card__title">{item.name}</h1>
+                            <h3>{item.address}</h3>
+                            <p>{item.description}</p>
+                        </div>
+
+                        {isAdmin && (
+                            <button className="buttonPartnerDish" onClick={() => {
+                                window.location.href = `/RegisterRestaurant/${item.ID}`
+                            }}>Editar</button>
+                        )}
+                    </div>
+                </div>
+            ))}
         </div>
     );
-
 }
-export default CardRestaurantRight
+
+export default CardRestaurantRight;
