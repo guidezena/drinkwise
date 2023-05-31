@@ -28,10 +28,15 @@ function CardRestaurantRight() {
             {data.map((item) => (
                 <div class="container_restaurant">
                     <div class="card_restaurant" onClick={() => {
-                            !isAdmin && (
-                                window.location = `/dishes/restaurant/${item.ID}`                                
+                        !isAdmin && (
+                            window.location = `/dishes/restaurant/${item.ID}`
+                        )
+                        {
+                            isAdmin && (
+                                window.location.href = `/RegisterRestaurant/${item.ID}`
                             )
-                        }}>
+                        }
+                    }}>
                         <div class="card__image-container">
                             {item.image == "" && (
                                 <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
@@ -40,10 +45,11 @@ function CardRestaurantRight() {
                                 <img src={`${item.image}`} alt="" />
                             )}
                         </div>
-
+                        <hr></hr>
                         <div class="card__content">
                             <h1 class="card__title">{item.name}</h1>
                             <h3>{item.address}</h3>
+                            <hr></hr>
                             <p>{item.description}</p>
                         </div>
 

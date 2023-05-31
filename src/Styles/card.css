@@ -153,11 +153,10 @@ body {
 }
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
     
 }
 
@@ -168,44 +167,13 @@ body {
 
 .card_image {
     position: relative;
-    max-height: 250px;
+    max-height: 100%;
 }
 
 .card_image img {
-    width: 100%;
+    width: 350px;
     height: 100%;
-    object-fit: cover;
-}
-
-.card_price {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 0.25rem;
-    background-color: #c51717;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.card_price span {
-    font-size: 12px;
-    margin-top: -2px;
-}
-
-.note {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    padding: 4px 8px;
-    border-radius: 0.25rem;
-    background-color: #c89b3f;
-    font-size: 14px;
-    font-weight: 700;
+    
 }
 
 @media (min-width: 40rem) {

@@ -1,21 +1,31 @@
-import React from 'react';
-import "../Styles/Restaurant.css"
+import React, { useState, useEffect } from "react";
+import "../Styles/Drink.css"
 import image from '../img/restaurante1.png'
 
 function Drink() {
-    return (
-        <div className='modelDish'>
-            <div className='card_drink'>
-                <div>
-                    <img className='img_drink'
-                        src={image}
-                        alt="Imagem " />
-                    <h4>
-                        Bebiba 1
-                    </h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing<br></br> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley <br></br>of type and scrambled it to make a type specimen book.</p>
-                </div>
 
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
+            const jsonData = await response.json();
+            setData(jsonData.reverse());
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        <div class="main">
+            <div class="cards_drinks">
+                    <div class="card_image_drink">
+                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                    </div>
+                    <div class="card_content_drink">
+                        <h2 class="card_title_drink"></h2>
+                        <div class="card_text_drink">
+                        </div>
+                    </div>
             </div>
         </div>
 

@@ -34,49 +34,37 @@ function GetDishes() {
             </div> 
     */
     return (
-        <div class="main">
-            {data.map((item) => {
-                return <div>
-                    <div class="cards">
-                        <div class="cards_item">
-                            <div class="card" >
-                                <div class="card_image">
-                                    {item.image == "" && (
-                                        <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-                                    )}
-                                    {item.image && (
-                                        <img src={`${item.image}`} alt="" />
-                                    )}
-                                    <span class="card_price"><span>$</span>9</span>
-                                </div>
-                                <div class="card_content">
-                                    <h2 class="card_title">{item.name}</h2>
-                                    <div class="card_text">
-                                        <p>{
-                                            item.description}
-                                        </p>
-                                        <button className="buttonPartnerDish" onClick={() => {
-                                            {
-                                                isAdmin && (
-                                                    window.location.href = `/AdminDishFree/${item.ID}`
-                                                )
-                                            }
-                                            {
-                                                !isAdmin && (
-                                                    window.location.href = `/`
-                                                )
-                                            }
-
-                                        }}>Bebidas</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div>
+            <div class="grid-cardPartnerDish">
+                {data.map((item) => (
+                    <div class="cardPartnerDish">
+                        {item.image == "" && (
+                            <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                        )}
+                        {item.image && (
+                            <img src={`${item.image}`} alt="" />
+                        )}
+                        <h2>{item.name}</h2>
+                        <p>{item.description}</p>
+                        <button className="buttonPartnerDish" onClick={() => {
+                            {
+                                isAdmin && (
+                                    window.location.href = `/AdminDishFree/${item.ID}`
+                                )
+                            }
+                            {
+                                !isAdmin && (
+                                    window.location.href = `/`
+                                )
+                            }
+                        }}>Bebidas</button>
                     </div>
-                </div>
-
-            })}
+                ))}
+            </div>
         </div>
-    );
+    )
+
+
+
 }
 export default GetDishes

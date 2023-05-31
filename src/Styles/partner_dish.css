@@ -5,7 +5,7 @@
   padding: 10px;
   margin: 20px;
   width: 350px;
-  height: 350px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +16,7 @@
 }
 
 .cardPartnerDish img {
-  width: 100%;
+  width: 250px;
   height: 200px;
   object-fit: cover;
   border-radius: 5px;

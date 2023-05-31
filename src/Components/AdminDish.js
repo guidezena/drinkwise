@@ -29,7 +29,7 @@ function InputDishFree() {
                 },
                 body: JSON.stringify({
                     name,
-                    image,
+                    image: base64Image,
                     description,
                     category_id: category_id,
                     restaurant_id: restaurant_id,
@@ -180,7 +180,7 @@ function InputDishFree() {
                     ))}
                 </select>
                 <label>Imagem Prato
-                    <input type="file" name="myImage" accept="image/*" onChange={handleFileChange} />
+                <input type="file" id="image" name="image" src='' onChange={handleFileChange} />
                 </label>
                 <button className="buttonInput" onClick={handleSubmit}>Salvar</button>
                 <button className="buttonInput" onClick={handleDelete}>Deletar</button>

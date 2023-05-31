@@ -7,14 +7,16 @@
     text-align: center;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    height: 250px;
+    height: 100%;
     font-size: 15px;
     padding-top: 36px;
-    border-radius: 5PX;
+    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.2),
         0 0 1rem rgba(0, 0, 0, 0.2);
     margin-bottom: 5%;
+    width: 95%;
+   
 
 }
 

@@ -16,25 +16,10 @@ function DrinkPartner() {
             <div>
                 <Image></Image>
             </div>
-            <div>
-                <Hr2></Hr2>
-            </div>
-            <div>
-                <DescriptionDish></DescriptionDish>
-            </div>
-            <div>
-                <Hr2></Hr2>
-            </div>
-            <div>
-                <SugestionDrinks></SugestionDrinks>
-            </div>
+            <hr></hr>            
             <div>
                 <Drink></Drink>
             </div>
-            <div>
-                <Drink2></Drink2>
-            </div>
-
         </React.Fragment>
     );
 }
