@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+
+
 import "../Styles/dish_free.css"
 
 
@@ -44,8 +46,6 @@ function Dish_Free() {
                         }
 
                     }}>
-
-
                         {item.image == "" && (
                             <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
                         )}

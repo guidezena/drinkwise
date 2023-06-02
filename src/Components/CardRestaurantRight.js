@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Restaurant.css"
-import image from '../img/restaurante2.png'
-import { ClassNames } from "@emotion/react";
+import { useNavigate } from 'react-router-dom';
 
 function CardRestaurantRight() {
+
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -29,11 +30,12 @@ function CardRestaurantRight() {
                 <div class="container_restaurant">
                     <div class="card_restaurant" onClick={() => {
                         !isAdmin && (
-                            window.location = `/dishes/restaurant/${item.ID}`
+                            navigate(`/dishes/restaurant/${item.ID}`
+                            )
                         )
                         {
                             isAdmin && (
-                                window.location.href = `/RegisterRestaurant/${item.ID}`
+                                navigate(`/RegisterRestaurant/${item.ID}`)
                             )
                         }
                     }}>

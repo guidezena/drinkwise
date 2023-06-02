@@ -4,6 +4,7 @@ import EatAndDrinks from "../Components/EatAndDrinks";
 import Gallery from "../Components/Gallery";
 import Image from "../Components/Image";
 import Hr2 from "../Components/Hr2";
+import Loading from "../Components/Loading";
 
 
 function Home() {

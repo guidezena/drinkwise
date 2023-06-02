@@ -14,7 +14,7 @@ function Navbar() {
         const token = window.localStorage.getItem("token");
         const user = JSON.parse(atob(token.split('.')[1]))
         setIsAdmin(user.is_admin)
-        
+
     }, [])
     return (
         <header>
@@ -27,19 +27,22 @@ function Navbar() {
                 <a href="/">Home</a>
                 <a href="/dishes">Pratos</a>
                 <a href="/restaurant">Restaurantes</a>
-                
-                
-               
+
+
+
 
                 {isAdmin && (
                     <>
-                        <a href="/AdminDishFree">Registrar pratos</a>
-                        <a href="/registerRestaurant">Registrar Restaurante</a>
-                        <a href="/admincategory">Registrar categoria</a>
-                        <a href="/registerdrink">Registrar Drinks</a>
+                        <a href="/Drinkpartner">Bebidas</a> 
+                        <a href="/AdminDishFree">Admin Pratos</a>
+                        <a href="/registerRestaurant">Admin Restaurante</a>
+                        <a href="/admincategory">Admin Categoria</a>
+                        <a href="/registerdrink">Admin Drinks</a>
+                        <a href="/AdminDrinkAndDish">Admin DrinksAndDish</a>
+
                     </>
                 )}
-                 <a href="#" onClick={() => {
+                <a href="#" onClick={() => {
                     window.localStorage.removeItem('token')
                     window.location.href = '/login'
                 }}>Sair</a>

@@ -82,11 +82,12 @@ function Register() {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>
+                
                 <div className="login-loginInputPassword">
                     <KeyIcon />
-                    <input
+                    <input  
                         placeholder="Confirme sua senha"
-                        type={show ? "text" : "password_confirmation"}
+                        type={show ? "text" : "password"}
                         value={password_confirmation}
                         onChange={e => setConfirmationPassword(e.target.value)}
                     />

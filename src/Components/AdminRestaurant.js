@@ -10,7 +10,7 @@ function AdminRestaurant() {
     const [id_user, set_id_user] = useState('');
     const { id } = useParams();
     const [data, setData] = useState([]);
-    
+
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -29,7 +29,7 @@ function AdminRestaurant() {
         const user = JSON.parse(atob(token.split('.')[1]))
         let url = 'https://mighty-lowlands-25016.herokuapp.com/restaurants';
         let method = 'POST'
-        if(id){
+        if (id) {
             method = 'PUT'
             url = url + `/${id}`
         }
@@ -85,30 +85,30 @@ function AdminRestaurant() {
     async function handleDelete() {
         if (!id) return;
         try {
-          const response = await fetch(
-            `https://mighty-lowlands-25016.herokuapp.com/restaurants/${id}`,
-            {
-              method: "DELETE",
+            const response = await fetch(
+                `https://mighty-lowlands-25016.herokuapp.com/restaurants/${id}`,
+                {
+                    method: "DELETE",
+                }
+            );
+            const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
+            if (response.status === 200 && shouldDelete) {
+                alert("Restaurante excluido com sucesso");
+                window.location.href = `/restaurant/`
+            } else {
+                alert("Não foi possível excluir a categoria");
             }
-          );
-          const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
-          if (response.status === 200 && shouldDelete) {
-            alert("Restaurante excluido com sucesso");
-            window.location.href = `/restaurant/`
-          } else {
-            alert("Não foi possível excluir a categoria");
-          }
         } catch (error) {
-          console.log(error);
-          alert("Erro ao excluir a categoria");
+            console.log(error);
+            alert("Erro ao excluir a categoria");
         }
-      }
+    }
 
     return (
         <div className='div_add_dish'>
             <div>
                 <h1>
-                    Cadastro restaurante
+                    Administrador de restaurantes
                 </h1>
             </div>
             <div className='inputRegister'>
@@ -119,7 +119,7 @@ function AdminRestaurant() {
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <label htmlFor="address">Endereço Restaurant</label>
+                <label htmlFor="address">Endereço Restaurante</label>
                 <input
                     type="text"
                     placeholder="Digite o endereço"

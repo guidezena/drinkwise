@@ -8,7 +8,7 @@ function PartnerDishes() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [address, setAddress] = useState("")
-    const {restaurant_id} = useParams();
+    const { restaurant_id } = useParams();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -25,20 +25,32 @@ function PartnerDishes() {
 
         fetchData();
     }, [restaurant_id]);
+    const [isAdmin, setIsAdmin] = useState(false)
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        const user = JSON.parse(atob(token.split('.')[1]))
+        setIsAdmin(user.is_admin)
 
+    }, [])
 
     return (
         <div>
-            {data.map((item) => (
-                <div class="grid-cardPartnerDish">
+            <div class="grid-cardPartnerDish">
+                {data.map((item) => (
                     <div class="cardPartnerDish">
                         <img src={item.image} alt="Imagem 1" />
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
-                        <button className='buttonPartnerDish'>Bebidas</button>
+                        <button className="buttonPartnerDish" onClick={() => {
+                            {
+                                !isAdmin && (
+                                    window.location.href = `/DrinkPartner`
+                                )
+                            }
+                        }}>Bebidas</button>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     );
 }

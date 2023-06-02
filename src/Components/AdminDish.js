@@ -137,18 +137,18 @@ function InputDishFree() {
                 alert("Prato excluido com sucesso");
                 window.location.href = `/dishes/`
             } else {
-                alert("Não foi possível excluir a categoria");
+                alert("Não foi possível excluir esse item");
             }
         } catch (error) {
             console.log(error);
-            alert("Erro ao excluir a categoria");
+            alert("Erro ao excluir o item");
         }
     }
 
     return (
         <div className='div_add_dish'>
             <div>
-                <h1>Cadastro de pratos</h1>
+                <h1>Administrador de pratos</h1>
             </div>
             <div className="inputRegister">
                 <input

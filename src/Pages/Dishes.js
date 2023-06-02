@@ -20,9 +20,12 @@ function Dishes() {
         <div>
           <EatAndDrink></EatAndDrink>
           <hr></hr>
-          
+
         </div>
-      <Category></Category>
+        <div>
+          <Category></Category>
+        </div>
+
       </div>
       <hr></hr>
 

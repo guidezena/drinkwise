@@ -107,12 +107,12 @@ function AdminCategory() {
     return (
         <div className='div_add_dish'>
             <div>
-                <h1>Cadastro de categorias</h1>
+                <h1>Administrador de categorias</h1>
             </div>
             <div className='inputRegister' >
             <input  
                     type="text"
-                    placeholder="Digite nome do prato"
+                    placeholder="Digite nome da categoria"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />

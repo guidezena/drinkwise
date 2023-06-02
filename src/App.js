@@ -13,6 +13,8 @@ import Dishes from "./Pages/Dishes";
 import AdminCategory from "./Pages/RegisterCategory";
 import RegisterRestaurant from "./Pages/RegisterRestaurant";
 import RegisterDrink from "./Pages/RegisterDrink";
+import AdminDrinkAndDish from "./Pages/AdminDrinkAndDish";
+import SugestionDrink from "./Pages/DrinkSuggestions";
 
 
 const Private = ({ Item }) => {
@@ -64,11 +66,13 @@ function App() {
         <Route path="/Dishes" element={<Private Item={Dishes} />} />
         <Route path="/Restaurant" element={<Private Item={Restaurant} />} />
         <Route path="/DrinkPartner" element={<Private Item={DrinkPartner} />} />
-
         <Route path="/dishes/category/:category_id" element={<Private Item={DishCategory} />} />
         <Route path="/dishes/restaurant/:restaurant_id" element={<Private Item={DishRestaurantPartnes} />} />
+        <Route path="/drinkpartner/:id" element={<Private Item={AdminDrinkAndDish} />} />
+        <Route path="drinksuggestions/:dish_id" element={<Private Item={SugestionDrink} />} />
 
 
+        <Route path="/AdminDrinkAndDish/" element={<PrivateAdmin Item={AdminDrinkAndDish} />} />
         <Route path="/AdminDishFree" element={<PrivateAdmin Item={AdminDishFree} />} />
         <Route path="/AdminCategory" element={<PrivateAdmin Item={AdminCategory} />} />
         <Route path="/RegisterRestaurant" element={<PrivateAdmin Item={RegisterRestaurant} />} />
@@ -82,6 +86,8 @@ function App() {
         <Route path="/RegisterRestaurant/:id" element={<PrivateAdmin Item={RegisterRestaurant} />} />
         <Route path="/RegisterDrink/:id" element={<PrivateAdmin Item={RegisterDrink} />} />
 
+
+        
 
 
 

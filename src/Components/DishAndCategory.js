@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom';
 import "../Styles/partner_dish.css"
-import imageCardPartnerDish from '../img/img2.jpg'
+import { useNavigate } from 'react-router-dom';
 
 function DishAndCategory() {
+  
+const navigate = useNavigate();
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
@@ -25,6 +27,14 @@ function DishAndCategory() {
         fetchData();
     }, [category_id]);
 
+    const [isAdmin, setIsAdmin] = useState(false)
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+        const user = JSON.parse(atob(token.split('.')[1]))
+        setIsAdmin(user.is_admin)
+
+    }, [])
+
 
     return (
         <div>
@@ -34,7 +44,13 @@ function DishAndCategory() {
                         <img src={item.image} alt="Imagem 1" />
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
-                        <button className='buttonPartnerDish'>Bebidas</button>
+                        <button className="buttonPartnerDish" onClick={() => {
+                            {
+                                !isAdmin && (
+                                    navigate(`/DrinkPartner`)
+                                )
+                            }
+                        }}>Bebidas</button>
                     </div>
                 ))}
             </div>
