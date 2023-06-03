@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Drink.css"
 import image from '../img/restaurante1.png'
+import Loading from "./Loading";
 
 function Drink() {
 
-
+    const [removeLoading, setRemoveLoading] = useState(false)
     const [data, setData] = useState([]);
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/drinks");
-            const jsonData = await response.json();
-            setData(jsonData.reverse());
-        };
+        setTimeout(() => {
+            const fetchData = async () => {
+                const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/drinks");
+                const jsonData = await response.json();
+                setData(jsonData.reverse());
+                setRemoveLoading(true)
+                setTimeout(() => {
 
-        fetchData();
+                })
+            };
+
+            fetchData();
+        }, 3000)
     }, []);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -23,7 +30,7 @@ function Drink() {
         setIsAdmin(user.is_admin)
 
     }, [])
-    
+
 
     return (
 
@@ -48,6 +55,9 @@ function Drink() {
                             <p>{item.description}</p>
                         </div>
                     ))}
+                    {
+                        !removeLoading && <Loading />
+                    }
                 </div>
             </div>
         </div>

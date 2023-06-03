@@ -19,21 +19,27 @@ function Navbar() {
     return (
         <header>
             <div className="titlenavbar">
-                <h1>
-                    DrinkWise
-                </h1>
+                <a href="/">
+                    <h1>
+                        DrinkWise
+                    </h1>
+                </a>
             </div>
             <nav ref={navRef}>
                 <a href="/">Home</a>
                 <a href="/dishes">Pratos</a>
                 <a href="/restaurant">Restaurantes</a>
+                <a href="/contact">Contato</a>
 
 
 
 
                 {isAdmin && (
                     <>
-                        <a href="/Drinkpartner">Bebidas</a> 
+                    
+
+
+                        <a href="/Drinkpartner">Bebidas</a>
                         <a href="/AdminDishFree">Admin Pratos</a>
                         <a href="/registerRestaurant">Admin Restaurante</a>
                         <a href="/admincategory">Admin Categoria</a>

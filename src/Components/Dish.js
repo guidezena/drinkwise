@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import "../Styles/card.css";
 
 function GetDishes() {
-  const[removeLoading, setRemoveLoading] = useState(false)
+  const [removeLoading, setRemoveLoading] = useState(false)
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
@@ -13,19 +13,19 @@ function GetDishes() {
 
 
   useEffect(() => {
-   setTimeout(() =>{
-    const fetchData = async () => {
-      const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/dishes");
-      const jsonData = await response.json();
-      setData(jsonData.reverse());
-      setRemoveLoading(true)
-      setTimeout(() =>{
-        
-      })
-    };
+    setTimeout(() => {
+      const fetchData = async () => {
+        const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/dishes");
+        const jsonData = await response.json();
+        setData(jsonData.reverse());
+        setRemoveLoading(true)
+        setTimeout(() => {
 
-    fetchData();
-   }, 3000)
+        })
+      };
+
+      fetchData();
+    }, 3000)
   }, []);
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -58,19 +58,19 @@ function GetDishes() {
               className="buttonPartnerDish"
               onClick={() => {
                 !isAdmin
-                  ? redirectToAdminDishFree(item.ID)
-                  : redirectToDrinkSuggestions(item.ID);
-              }}
+                  ? redirectToDrinkSuggestions(item.ID)
+                  :redirectToAdminDishFree(item.ID) 
+                }}
             >
-              Bebidas
-            </button>
+            Bebidas
+          </button>
           </div>
         ))}
-        {
-          !removeLoading && <Loading />
-        }
-      </div>
+      {
+        !removeLoading && <Loading />
+      }
     </div>
+    </div >
   );
 }
 

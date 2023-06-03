@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import Loading from "./Loading";
 
 import "../Styles/dish_free.css"
 
 
 
 function Dish_Free() {
+    const [removeLoading, setRemoveLoading] = useState(false)
     const navigate = useNavigate();
 
     const [data, setData] = useState([]);
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
-            const jsonData = await response.json();
-            setData(jsonData.reverse());
-        };
+        setTimeout(() => {
+            const fetchData = async () => {
+                const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
+                const jsonData = await response.json();
+                setData(jsonData.reverse());
+                setRemoveLoading(true)
+                setTimeout(() => {
 
-        fetchData();
+                })
+            };
+
+            fetchData();
+        }, 3000)
     }, []);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -36,7 +43,7 @@ function Dish_Free() {
                     return <div class="article-card" onClick={() => {
                         {
                             isAdmin && (
-                                navigate(`/AdminCategory`) 
+                                navigate(`/AdminCategory`)
                             )
                         }
                         {
@@ -57,9 +64,10 @@ function Dish_Free() {
 
                         </div>
                     </div>
-
-
                 })}
+                {
+                    !removeLoading && <Loading />
+                }
             </div>
         </div>
 

@@ -15,6 +15,7 @@ import RegisterRestaurant from "./Pages/RegisterRestaurant";
 import RegisterDrink from "./Pages/RegisterDrink";
 import AdminDrinkAndDish from "./Pages/AdminDrinkAndDish";
 import SugestionDrink from "./Pages/DrinkSuggestions";
+import Contact from "./Pages/Contact";
 
 
 const Private = ({ Item }) => {
@@ -70,6 +71,8 @@ function App() {
         <Route path="/dishes/restaurant/:restaurant_id" element={<Private Item={DishRestaurantPartnes} />} />
         <Route path="/drinkpartner/:id" element={<Private Item={AdminDrinkAndDish} />} />
         <Route path="drinksuggestions/:dish_id" element={<Private Item={SugestionDrink} />} />
+        <Route path="/contact" element={<Private Item={Contact} />} />
+
 
 
         <Route path="/AdminDrinkAndDish/" element={<PrivateAdmin Item={AdminDrinkAndDish} />} />

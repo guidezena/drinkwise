@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Restaurant.css"
 import { useParams } from 'react-router-dom';
+import { useTheme } from "@emotion/react";
+import Loading from "./Loading";
 
 function SugestionDrink() {
+    const [removeLoading, setRemoveLoading] = useState(false)
     const { dish_id } = useParams();
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [data, setData] = useState([]);
-    
-    useEffect(() => {
-        if (!dish_id) return
-        const fetchData = async () => {
-            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`);
-            const jsonData = await response.json();
-            setName(jsonData.name);
-            setImage(jsonData.image);
-            setDescription(jsonData.description);
-            setData(jsonData.reverse());
-            console.log(jsonData)
 
-        };
-        fetchData();
+    useEffect(() => {
+        setTimeout(() => {
+            if (!dish_id) return
+            const fetchData = async () => {
+                const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`);
+                const jsonData = await response.json();
+                setName(jsonData.name);
+                setImage(jsonData.image);
+                setDescription(jsonData.description);
+                setData(jsonData.reverse());
+                setRemoveLoading(true)
+                console.log(jsonData)
+
+            };
+            fetchData();
+        }, 3000)
     }, [dish_id]);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -55,6 +61,9 @@ function SugestionDrink() {
                     </div>
                 </div>
             ))}
+            {
+                !removeLoading && <Loading />
+            }
         </div>
     );
 }

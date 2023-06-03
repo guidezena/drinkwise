@@ -1,0 +1,19 @@
+.div_contact{
+    box-shadow: 0 0.2em 1em rgba(61,48,41,0.2);
+    
+}
+.inputRegister_contact input h1{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 5px;
+    width: 70%;
+    height: 50px;
+    border-radius: 5px;
+
+}

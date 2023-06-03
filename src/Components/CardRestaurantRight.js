@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Restaurant.css"
 import { useNavigate } from 'react-router-dom';
+import Loading from "./Loading";
 
 function CardRestaurantRight() {
-
+    const [removeLoading, setRemoveLoading] = useState(false)
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
-            const jsonData = await response.json();
-            setData(jsonData.reverse());
-        };
+        setTimeout(() => {
+            const fetchData = async () => {
+                const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
+                const jsonData = await response.json();
+                setData(jsonData.reverse());
+                setRemoveLoading(true)
+                setTimeout(() => {
 
-        fetchData();
+                })
+            };
+
+            fetchData();
+        }, 3000)
     }, []);
     const [isAdmin, setIsAdmin] = useState(false)
     useEffect(() => {
@@ -28,17 +35,7 @@ function CardRestaurantRight() {
         <div className="restaurant_adjust">
             {data.map((item) => (
                 <div class="container_restaurant">
-                    <div class="card_restaurant" onClick={() => {
-                        !isAdmin && (
-                            navigate(`/dishes/restaurant/${item.ID}`
-                            )
-                        )
-                        {
-                            isAdmin && (
-                                navigate(`/RegisterRestaurant/${item.ID}`)
-                            )
-                        }
-                    }}>
+                    <div class="card_restaurant">
                         <div class="card__image-container">
                             {item.image == "" && (
                                 <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
@@ -59,10 +56,19 @@ function CardRestaurantRight() {
                             <button className="buttonPartnerDish" onClick={() => {
                                 window.location.href = `/RegisterRestaurant/${item.ID}`
                             }}>Editar</button>
+
+                        )}  {!isAdmin && (
+                            <button className="buttonPartnerDish" onClick={() => {
+                                navigate(`/dishes/restaurant/${item.ID}`)
+                            }}>Acessar pratos</button>
+
                         )}
                     </div>
                 </div>
             ))}
+            {
+                !removeLoading && <Loading />
+            }
         </div>
     );
 }
