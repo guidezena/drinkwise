@@ -36,22 +36,23 @@ function CardRestaurantRight() {
             {data.map((item) => (
                 <div class="container_restaurant">
                     <div class="card_restaurant">
-                        <div class="card__image-container" onClick={() => { isAdmin && navigate(`/dishes/restaurant/${item.ID}`) }}>
-                            {item.image == "" && (
-                                <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-                            )}
-                            {item.image && (
-                                <img src={`${item.image}`} alt="" />
-                            )}
-                        </div>
-                        <hr></hr>
-                        <div class="card__content">
-                            <h1 class="card__title">{item.name}</h1>
-                            <h3>{item.address}</h3>
+                        <div class="card__image-container">
+                            <div onClick={() => { isAdmin && navigate(`/dishes/restaurant/${item.ID}`) }}>
+                                {item.image == "" && (
+                                    <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+                                )}
+                                {item.image && (
+                                    <img src={`${item.image}`} alt="" />
+                                )}
+                            </div>
                             <hr></hr>
-                            <p>{item.description}</p>
+                            <div class="card__content">
+                                <h1 class="card__title">{item.name}</h1>
+                                <h3>{item.address}</h3>
+                                <hr></hr>
+                                <p>{item.description}</p>
+                            </div>
                         </div>
-
                         {isAdmin && (
                             <button className="buttonPartnerDish" onClick={() => {
                                 window.location.href = `/RegisterRestaurant/${item.ID}`
@@ -61,7 +62,6 @@ function CardRestaurantRight() {
                             <button className="buttonPartnerDish" onClick={() => {
                                 navigate(`/dishes/restaurant/${item.ID}`)
                             }}>Acessar pratos</button>
-
                         )}
                     </div>
                 </div>

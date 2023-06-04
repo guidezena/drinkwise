@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom';
+import Select from 'react-select'
 
 function AdminDrinkSuggestions() {
     const [name, setName] = useState("")
@@ -8,12 +9,28 @@ function AdminDrinkSuggestions() {
     const [dish, setDish] = useState([]);
     const [image, setImage] = useState("")
     const { id } = useParams();
-    
+    const [drinkInDishes, setDrinkInDishes] = useState([])
     const [base64Image, setBase64Image] = useState('');
     const [dish_id, setdishId] = useState('');
     const [drink_id, setdrinkID] = useState('');
+    const [oldDrinkInDishes, setOldDrinkInDishes] = useState([])
 
     async function handleSubmit() {
+        
+        const DeletedDrinks = []
+        const AddDrinks = []
+
+        oldDrinkInDishes.forEach((oldDrink) => {
+            const FindDrink = drinkInDishes.find((drink) => {
+                return drink.value == oldDrink.value
+            })
+            if(!FindDrink){
+
+            }
+        })
+
+        
+
         try {
             let url = 'https://mighty-lowlands-25016.herokuapp.com/drinksuggestions';
             let method = 'POST'
@@ -25,7 +42,7 @@ function AdminDrinkSuggestions() {
                 body: JSON.stringify({
                     dish_id: dish_id,
                     drink_id: drink_id,
-                    
+
                 })
             });
 
@@ -69,8 +86,40 @@ function AdminDrinkSuggestions() {
         }
     }
 
+
+    const handleDishChange = (event) => {
+        const selectedDishId = parseInt(event.target.value);
+        setdishId(selectedDishId);
+        console.log(selectedDishId)
+
+        HandleDrinksInDishes(selectedDishId)
         
-    
+        };
+
+    const handleDrinkChange = (drinks) => {
+        setDrinkInDishes(drinks);
+        console.log(drinks)
+        
+    };
+    const HandleDrinksInDishes = async (dish_id) => {
+        const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`);
+        const jsonData = await response.json()
+        setDrinkInDishes(jsonData.map((drink) => {
+            return {
+                value: drink.Drink.ID,
+                label: drink.Drink.name,
+            }
+        }))
+        setOldDrinkInDishes(jsonData.map((drink) => {
+            return {
+                value: drink.Drink.ID,
+                label: drink.Drink.name,
+            }
+        }))
+    }
+
+
+
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/dishes");
@@ -92,26 +141,13 @@ function AdminDrinkSuggestions() {
         fetchData();
     }, []);
 
-    const handleDishChange = (event) => {
-        const selectedDishId = parseInt(event.target.value);
-        setdishId(selectedDishId);
-        console.log(selectedDishId)
-    };
-
-    const handleDrinkChange = (event) => {
-        const selectedDrinkId = parseInt(event.target.value);
-        setdrinkID(selectedDrinkId);
-        console.log(selectedDrinkId)
-
-    };
-
-
 
     return (
         <div className='div_add_dish'>
             <div>
                 <h1>Administrador bebidas aos pratos</h1>
             </div>
+
             <div className="inputRegister">
                 <label>Pratos</label>
                 <div>
@@ -123,12 +159,16 @@ function AdminDrinkSuggestions() {
                     </select>
                 </div>
                 <label>Bebidas</label>
-                <select name="select" className='select_register' onChange={handleDrinkChange}>
-                    <option value="" selected disabled>Selecione uma bebida</option>
-                    {drinks.map((item) => (
-                        <option key={item.ID} selected={item.ID == drink_id} value={item.ID}>{item.name}</option>
-                    ))}
-                </select>
+                <Select isMulti
+                    value={drinkInDishes}
+                    onChange={handleDrinkChange}
+                    options={drinks.map((drink) => {
+                        return {
+                            value: drink.ID,
+                            label: drink.name,
+                        }
+                    })} />
+
                 <button className="buttonInput" onClick={handleSubmit}>Salvar</button>
 
             </div>

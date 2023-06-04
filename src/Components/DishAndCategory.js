@@ -41,17 +41,20 @@ function DishAndCategory() {
     }, [])
     const redirectToDrinkSuggestions = (dishID) => {
         navigate(`/drinksuggestions/${dishID}`)
-      };
+    };
 
 
     return (
         <div>
             <div class="grid-cardPartnerDish">
                 {data.map((item) => (
-                    <div class="cardPartnerDish" onClick={() => { isAdmin && redirectToDrinkSuggestions(item.ID) }}>
-                        <img src={item.image} alt="Imagem 1" />
-                        <h2>{item.name}</h2>
-                        <p>{item.description}</p>
+                    <div class="cardPartnerDish">
+                        <div onClick={() => { isAdmin && redirectToDrinkSuggestions(item.ID) }}>
+                            <img src={item.image} alt="Imagem 1" />
+                            <h2>{item.name}</h2>
+                            <p>{item.description}</p>
+                        </div>
+
                         <button className="buttonPartnerDish" onClick={() => {
                             {
                                 !isAdmin && (

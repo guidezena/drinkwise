@@ -43,7 +43,7 @@ function Dish_Free() {
                     return <div class="article-card" onClick={() => {
                         {
                             isAdmin && (
-                                navigate(`/AdminCategory`)
+                                navigate(`/AdminCategory/${item.ID}`)
                             )
                         }
                         {

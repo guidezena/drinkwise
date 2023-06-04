@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react"
-import { useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 
 function AdminCategory() {
     const [name, setName] = useState("")
@@ -61,7 +61,7 @@ function AdminCategory() {
         if (!id) return;
         try {
           const response = await fetch(
-            `https://mighty-lowlands-25016.herokuapp.com/categories/${id}`,
+            `https://mighty-lowlands-25016.herokuapp.com/categories/`,
             {
               method: "DELETE",
             }
@@ -88,7 +88,9 @@ function AdminCategory() {
             const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/categories/${id}`);
             const jsonData = await response.json();
             setName(jsonData.name);
+            setData(jsonData);
             setImage(jsonData.image);
+            console.log(setName)
         };
 
         fetchData();
@@ -96,9 +98,10 @@ function AdminCategory() {
     ; 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/categories/`);
             const jsonData = await response.json();
             setData(jsonData);
+            
         };
 
         fetchData();
