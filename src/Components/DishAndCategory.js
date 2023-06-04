@@ -24,6 +24,7 @@ function DishAndCategory() {
                 setImage(jsonData.image);
                 setDescription(jsonData.description);
                 setData(jsonData.reverse());
+                setRemoveLoading(true)
                 console.log(jsonData)
 
             };
@@ -38,20 +39,23 @@ function DishAndCategory() {
         setIsAdmin(user.is_admin)
 
     }, [])
+    const redirectToDrinkSuggestions = (dishID) => {
+        navigate(`/drinksuggestions/${dishID}`)
+      };
 
 
     return (
         <div>
             <div class="grid-cardPartnerDish">
                 {data.map((item) => (
-                    <div class="cardPartnerDish">
+                    <div class="cardPartnerDish" onClick={() => { isAdmin && redirectToDrinkSuggestions(item.ID) }}>
                         <img src={item.image} alt="Imagem 1" />
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
                         <button className="buttonPartnerDish" onClick={() => {
                             {
                                 !isAdmin && (
-                                    navigate(`/DrinkPartner`)
+                                    redirectToDrinkSuggestions(item.ID)
                                 )
                             }
                         }}>Bebidas</button>

@@ -51,7 +51,7 @@ function PartnerDishes() {
     <div>
       <div class="grid-cardPartnerDish">
         {data.map((item) => (
-          <div class="cardPartnerDish">
+          <div class="cardPartnerDish" onClick={() => { isAdmin && redirectToDrinkSuggestions(item.ID) }}>
             <img src={item.image} alt="Imagem 1" />
             <h2>{item.name}</h2>
             <p>{item.description}</p>

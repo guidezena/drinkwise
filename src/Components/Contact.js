@@ -75,7 +75,7 @@ function Contato_partner() {
                 ></textarea>
                 <hr>
                 </hr>
-                <button className='buttonInput_contact' type="submit" onClick={handleSubmit}>Salvar</button>
+                <button className='buttonInput_contact' type="submit" onClick={handleSubmit}>Enviar</button>
             </div>
 
         </div>

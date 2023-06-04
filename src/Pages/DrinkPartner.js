@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import Image from "../Components/Image";
+import ImageDrink from "../Components/ImageDrink";
 import Drink from "../Components/Drink";
 import Drink2 from "../Components/Drink2";
 import DescriptionDish from "../Components/DescriptionDish";
@@ -14,7 +14,7 @@ function DrinkPartner() {
         <React.Fragment>
             <Navbar></Navbar>
             <div>
-                <Image></Image>
+                <ImageDrink></ImageDrink>
             </div>
             <hr></hr>            
             <div>

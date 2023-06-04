@@ -47,24 +47,26 @@ function GetDishes() {
     <div>
       <div class="grid-cardPartnerDish">
         {data.map((item) => (
-          <div class="cardPartnerDish">
-            {item.image == "" && (
-              <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
-            )}
-            {item.image && <img src={`${item.image}`} alt="" />}
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-            <button
-              className="buttonPartnerDish"
-              onClick={() => {
-                !isAdmin
-                  ? redirectToDrinkSuggestions(item.ID)
-                  :redirectToAdminDishFree(item.ID) 
-                }}
-            >
-            Bebidas
-          </button>
-          </div>
+          <div class="cardPartnerDish" onClick={() => { isAdmin && redirectToDrinkSuggestions(item.ID) }} >
+        {item.image == "" && (
+          <img src="https://goldlifesp.com.br/arquivos/produto_sem_foto.gif" />
+        )}
+        {item.image && <img src={`${item.image}`} alt="" />}
+        <h2>{item.name}</h2>
+        <p>{item.description}</p>
+        
+        {isAdmin && (
+          <button className="buttonPartnerDish" onClick={() => {
+            redirectToAdminDishFree(item.ID)
+          }}>Editar</button>
+
+        )}  {!isAdmin && (
+          <button className="buttonPartnerDish" onClick={() => {
+            redirectToDrinkSuggestions(item.ID)
+          }}>Bebidas</button>
+
+        )}
+      </div>
         ))}
       {
         !removeLoading && <Loading />

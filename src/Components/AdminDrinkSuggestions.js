@@ -130,7 +130,7 @@ function AdminDrinkSuggestions() {
                     ))}
                 </select>
                 <button className="buttonInput" onClick={handleSubmit}>Salvar</button>
-                <button className="buttonInput" onClick={handleDelete}>Deletar</button>
+
             </div>
         </div>
     );
