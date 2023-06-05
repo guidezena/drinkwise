@@ -11,13 +11,20 @@ function SugestionDrink() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [data, setData] = useState([]);
+    const [isPremium, setIsPremium] = useState(false)
 
     useEffect(() => {
         setTimeout(() => {
             if (!dish_id) return
             const fetchData = async () => {
-                const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`);
-                const jsonData = await response.json();
+                var myHeaders = new Headers();
+                myHeaders.append("is-premium", isPremium);
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                };
+                const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
+                const jsonData = await response.json()
                 setName(jsonData.name);
                 setImage(jsonData.image);
                 setDescription(jsonData.description);
@@ -35,6 +42,8 @@ function SugestionDrink() {
         const token = window.localStorage.getItem("token");
         const user = JSON.parse(atob(token.split('.')[1]))
         setIsAdmin(user.is_admin)
+        setIsPremium(user.is_premium)
+        console.log(user)
 
     }, [])
 

@@ -18,7 +18,6 @@ function CardRestaurantRight() {
 
                 })
             };
-
             fetchData();
         }, 3000)
     }, []);
@@ -27,7 +26,6 @@ function CardRestaurantRight() {
         const token = window.localStorage.getItem("token");
         const user = JSON.parse(atob(token.split('.')[1]))
         setIsAdmin(user.is_admin)
-
     }, [])
 
 

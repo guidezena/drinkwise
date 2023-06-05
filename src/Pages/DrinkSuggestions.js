@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import ImageRestaurant from "../Components/ImageRestaurant";
+import ImageDrink from "../Components/ImageDrink";
 
 import EatAndDrink from "../Components/EatAndDrinks";
 import SugestionDrink from "../Components/SugestionDrinks";
@@ -12,7 +12,7 @@ function DrinkSuggestions() {
             <Navbar></Navbar>
 
             <div>
-                <ImageRestaurant></ImageRestaurant>
+                <ImageDrink></ImageDrink>
             </div>
             <div>
                 <EatAndDrink></EatAndDrink>

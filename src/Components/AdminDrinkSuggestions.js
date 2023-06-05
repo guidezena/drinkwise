@@ -1,6 +1,8 @@
 
+import { async } from "q";
 import React, { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select'
 
 function AdminDrinkSuggestions() {
@@ -12,15 +14,13 @@ function AdminDrinkSuggestions() {
     const [drinkInDishes, setDrinkInDishes] = useState([])
     const [base64Image, setBase64Image] = useState('');
     const [dish_id, setdishId] = useState('');
-    const [drink_id, setdrinkID] = useState('');
     const [oldDrinkInDishes, setOldDrinkInDishes] = useState([])
+    const navigate = useNavigate();
 
     async function handleSubmit() {
-
         const addedDishes = [];
-
-        // Array para armazenar os itens deletados
         const deletedDishes = [];
+
 
         // Verificar itens adicionados
         drinkInDishes.forEach(newItem => {
@@ -45,8 +45,37 @@ function AdminDrinkSuggestions() {
         });
         console.log(addedDishes)
         console.log(deletedDishes)
-        return
 
+        for (let i = 0; i < addedDishes.length; i++) {
+            addDrink(addedDishes[i].value);
+        }
+
+        for (let i = 0; i < deletedDishes.length; i++) {
+            handleDelete(deletedDishes[i].value);
+        }
+        if (addedDishes || deletedDishes) {
+            alert('Salvo com sucesso')
+            //navigate(`/dish/`)
+        }
+
+    }
+
+    async function handleDelete(drink_id) {
+        
+        try {
+            const response = await fetch(
+                `https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}/${drink_id}`,
+                {
+                    method: "DELETE",
+                }
+            );
+        } catch (error) {
+            console.log(error);
+            alert("Erro ao excluir este item");
+        }
+    }
+
+    async function addDrink(drink_id) {
         try {
             let url = 'https://mighty-lowlands-25016.herokuapp.com/drinksuggestions';
             let method = 'POST'
@@ -59,49 +88,15 @@ function AdminDrinkSuggestions() {
                     dish_id: dish_id,
                     drink_id: drink_id,
 
+
                 })
             });
-
-            if (response.status === 201) {
-                alert('inserção de Bebidas para os pratos feito com sucesso')
-                window.location.href = `/drinkpartner/`
-            } else if (response.status === 200) {
-                alert('inserção de Bebidas para os pratos com sucesso');
-                window.location.href = `/drinkpartner/`
-            } else {
-                alert("Não foi possivel efetuar o cadastro")
-            }
         } catch (error) {
             // Erro ao chamar a API, exibir mensagem de erro
             console.log(error)
             alert('Erro ao fazer o cadastro');
         }
-
     }
-
-    async function handleDelete() {
-        if (!id) return;
-        try {
-            const response = await fetch(
-                `https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${drink_id.ID}/${dish_id.ID}`,
-                {
-                    method: "DELETE",
-                }
-
-            );
-            const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
-            if (response.status === 200 && shouldDelete) {
-                alert("Item excluido com sucesso");
-                window.location.href = `/dish/`
-            } else {
-                alert("Não foi possível excluir este item");
-            }
-        } catch (error) {
-            console.log(error);
-            alert("Erro ao excluir este item");
-        }
-    }
-
 
     const handleDishChange = (event) => {
         const selectedDishId = parseInt(event.target.value);
@@ -114,18 +109,17 @@ function AdminDrinkSuggestions() {
 
     const handleDrinkChange = (drinks) => {
         setDrinkInDishes(drinks);
-        console.log(drinks)
 
     };
     const HandleDrinksInDishes = async (dish_id) => {
         var myHeaders = new Headers();
-        myHeaders.append("is_premium", true);
+        myHeaders.append("is-premium", "true");
 
         var requestOptions = {
             method: 'GET',
             headers: myHeaders,
         };
-        const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
+        const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions-admin/${dish_id}`, requestOptions);
         const jsonData = await response.json()
         setDrinkInDishes(jsonData.map((drink) => {
             return {
@@ -139,7 +133,9 @@ function AdminDrinkSuggestions() {
                 label: drink.Drink.name,
             }
         }))
+
     }
+
 
 
 
