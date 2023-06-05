@@ -16,20 +16,36 @@ function AdminDrinkSuggestions() {
     const [oldDrinkInDishes, setOldDrinkInDishes] = useState([])
 
     async function handleSubmit() {
-        
-        const DeletedDrinks = []
-        const AddDrinks = []
 
-        oldDrinkInDishes.forEach((oldDrink) => {
-            const FindDrink = drinkInDishes.find((drink) => {
-                return drink.value == oldDrink.value
-            })
-            if(!FindDrink){
+        const addedDishes = [];
 
+        // Array para armazenar os itens deletados
+        const deletedDishes = [];
+
+        // Verificar itens adicionados
+        drinkInDishes.forEach(newItem => {
+            const found = oldDrinkInDishes.some(oldItem => {
+                return oldItem.value === newItem.value && oldItem.label === newItem.label;
+            });
+
+            if (!found) {
+                addedDishes.push(newItem);
             }
-        })
+        });
 
-        
+        // Verificar itens deletados
+        oldDrinkInDishes.forEach(oldItem => {
+            const found = drinkInDishes.some(newItem => {
+                return newItem.value === oldItem.value && newItem.label === oldItem.label;
+            });
+
+            if (!found) {
+                deletedDishes.push(oldItem);
+            }
+        });
+        console.log(addedDishes)
+        console.log(deletedDishes)
+        return
 
         try {
             let url = 'https://mighty-lowlands-25016.herokuapp.com/drinksuggestions';
@@ -93,16 +109,23 @@ function AdminDrinkSuggestions() {
         console.log(selectedDishId)
 
         HandleDrinksInDishes(selectedDishId)
-        
-        };
+
+    };
 
     const handleDrinkChange = (drinks) => {
         setDrinkInDishes(drinks);
         console.log(drinks)
-        
+
     };
     const HandleDrinksInDishes = async (dish_id) => {
-        const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`);
+        var myHeaders = new Headers();
+        myHeaders.append("is_premium", true);
+
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+        };
+        const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
         const jsonData = await response.json()
         setDrinkInDishes(jsonData.map((drink) => {
             return {
