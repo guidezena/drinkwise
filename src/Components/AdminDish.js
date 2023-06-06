@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import "../Styles/adminDishFree.css"
 import { useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 function InputDishFree() {
     const [data, setData] = useState([]);
@@ -13,6 +14,7 @@ function InputDishFree() {
     const [category_id, set_category_id] = useState('');
     const [restaurant_id, set_restaurant_id] = useState('');
     const { id } = useParams();
+    const navigate = useNavigate();
 
     async function handleSubmit() {
         let url = 'https://mighty-lowlands-25016.herokuapp.com/dishes';
@@ -42,8 +44,10 @@ function InputDishFree() {
             //console.log(data)
             if (response.status === 201) {
                 alert('Cadastro do prato feito com sucesso')
+                navigate('/dishes')
             } else if (response.status === 200) {
                 alert('Prato atualizado com sucesso')
+                navigate('/dishes')
             }
             else {
                 alert('Nao foi possivel efetuar o cadastro');
@@ -135,7 +139,7 @@ function InputDishFree() {
             const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
             if (response.status === 200 && shouldDelete) {
                 alert("Prato excluido com sucesso");
-                window.location.href = `/dishes/`
+                navigate('/dishes')
             } else {
                 alert("Não foi possível excluir esse item");
             }

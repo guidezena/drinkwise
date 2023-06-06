@@ -24,7 +24,7 @@ function Dish_Free() {
             };
 
             fetchData();
-        }, 3000)
+        }, 2000)
     }, []);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -34,7 +34,7 @@ function Dish_Free() {
         setIsAdmin(user.is_admin)
 
     }, [])
-
+   
 
     return (
         <div className="adjust_padding">
@@ -48,6 +48,7 @@ function Dish_Free() {
                         }
                         {
                             !isAdmin && (
+                               
                                 navigate(`/dishes/category/${item.ID}`)
                             )
                         }

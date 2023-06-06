@@ -14,6 +14,11 @@ import Img12 from '../img/imagem12.jpeg'
 import Img13 from '../img/imagem13.jpg'
 import Img14 from '../img/imagem14.jpg'
 import Img15 from '../img/imagem15.jpg'
+import Img16 from '../img/imagem16.jpg'
+import Img17 from '../img/imagem17.webp'
+import Img18 from '../img/imagem18.jpg'
+import Img19 from '../img/imagem19.webp'
+import Img20 from '../img/imagem20.jpg'
 
 
 import "../Styles/gallery.css"
@@ -80,20 +85,20 @@ const Gallery = () => {
             imgSrc: Img15,
         }, {
             id: 6,
-            imgSrc: Img6,
+            imgSrc: Img16,
         }, {
             id: 7,
-            imgSrc: Img7,
+            imgSrc: Img17,
         }, {
             id: 8,
-            imgSrc: Img8,
+            imgSrc: Img18,
         }, {
             id: 9,
-            imgSrc: Img9,
+            imgSrc: Img19,
         },
         {
             id: 10,
-            imgSrc: Img10,
+            imgSrc: Img20,
         },
     ]
     const [model, setModel] = useState(false);

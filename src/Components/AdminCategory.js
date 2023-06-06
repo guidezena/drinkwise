@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect } from "react"
 import {useParams } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 function AdminCategory() {
     const [name, setName] = useState("")
     const [image, setImage] = useState("")
     const { id } = useParams();
     const [data, setData] = useState([]);
+    const navigate = useNavigate();
 
     const [base64Image, setBase64Image] = useState('');
     const handleFileChange = (event) => {
@@ -44,8 +46,10 @@ function AdminCategory() {
             const data = await response.json();
             if (response.status === 201) {
                 alert('Cadastro de categoria feito com sucesso')
+                navigate('/dishes')
             }else if(response.status === 200){
                 alert('Categoria atualizada com sucesso')
+                navigate('/dishes')
             } 
             else {
                 alert('Nao foi possivel efetuar o cadastro');
@@ -61,7 +65,7 @@ function AdminCategory() {
         if (!id) return;
         try {
           const response = await fetch(
-            `https://mighty-lowlands-25016.herokuapp.com/categories/`,
+            `https://mighty-lowlands-25016.herokuapp.com/categories/${id}`,
             {
               method: "DELETE",
             }
@@ -70,7 +74,7 @@ function AdminCategory() {
           if (response.status === 200 && shouldDelete ) {
             alert("Categoria excluída com sucesso");
             // Redirecionar ou atualizar a lista de categorias após a exclusão
-            window.location.href = `/category/`
+            navigate('/dishes') 
           } else {
             alert("Não foi possível excluir a categoria");
           }

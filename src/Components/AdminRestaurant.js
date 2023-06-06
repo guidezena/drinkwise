@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AdminRestaurant() {
     const [name, setName] = useState("")
@@ -10,6 +11,8 @@ function AdminRestaurant() {
     const [id_user, set_id_user] = useState('');
     const { id } = useParams();
     const [data, setData] = useState([]);
+
+    const navigate = useNavigate();
 
 
     const handleFileChange = (event) => {
@@ -46,8 +49,10 @@ function AdminRestaurant() {
             console.log(data)
             if (response.status === 201) {
                 alert('Cadastro do restaurante feito com sucesso')
+                navigate('/restaurant')
             } else if (response.status === 200) {
                 alert('Restaurante atualizado com sucesso')
+                navigate('/restaurant')
             }
             else {
                 alert('Nao foi possivel efetuar o cadastro');
@@ -94,7 +99,7 @@ function AdminRestaurant() {
             const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
             if (response.status === 200 && shouldDelete) {
                 alert("Restaurante excluido com sucesso");
-                window.location.href = `/restaurant/`
+                navigate('/restaurant')
             } else {
                 alert("Não foi possível excluir a categoria");
             }

@@ -29,7 +29,7 @@ function DishAndCategory() {
 
             };
             fetchData();
-        }, 3000)
+        }, 2000)
     }, [category_id]);
 
     const [isAdmin, setIsAdmin] = useState(false)

@@ -19,7 +19,7 @@ function CardRestaurantRight() {
                 })
             };
             fetchData();
-        }, 3000)
+        }, 2000)
     }, []);
     const [isAdmin, setIsAdmin] = useState(false)
     useEffect(() => {

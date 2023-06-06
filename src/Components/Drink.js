@@ -20,7 +20,7 @@ function Drink() {
             };
 
             fetchData();
-        }, 3000)
+        }, 2000)
     }, []);
 
     const [isAdmin, setIsAdmin] = useState(false)

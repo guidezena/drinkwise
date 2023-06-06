@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import "../Styles/adminDishFree.css"
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AdminDrinks() {
 
@@ -9,6 +10,7 @@ function AdminDrinks() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const { id } = useParams();
+    const navigate = useNavigate();
 
     async function handleSubmit() {
 
@@ -30,10 +32,11 @@ function AdminDrinks() {
 
             if (response.status === 201) {
                 alert('Cadastro de Bebidas feito com sucesso')
-                window.location.href = `/drinkpartner/`
+                navigate(`/drinkpartner/`)
             } else if (response.status === 200) {
                 alert('Bebida atualizada com sucesso');
-                window.location.href = `/drinkpartner/`
+                navigate(`/drinkpartner/`)
+
             } else {
                 alert("Não foi possivel efetuar o cadastro")
             }
@@ -84,7 +87,7 @@ function AdminDrinks() {
             const shouldDelete = window.confirm('Tem certeza que deseja excluir este item?');
             if (response.status === 200 && shouldDelete) {
                 alert("bebida excluido com sucesso");
-                window.location.href = `/drinkpartner/`
+                navigate(`/drinkpartner/`)
             } else {
                 alert("Não foi possível excluir a bebida");
             }

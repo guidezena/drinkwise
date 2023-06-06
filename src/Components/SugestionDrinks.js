@@ -34,7 +34,7 @@ function SugestionDrink() {
 
             };
             fetchData();
-        }, 3000)
+        }, 2000)
     }, [dish_id]);
 
     const [isAdmin, setIsAdmin] = useState(false)

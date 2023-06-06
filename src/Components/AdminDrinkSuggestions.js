@@ -55,7 +55,7 @@ function AdminDrinkSuggestions() {
         }
         if (addedDishes || deletedDishes) {
             alert('Salvo com sucesso')
-            //navigate(`/dish/`)
+            navigate(`/dish/`)
         }
 
     }
