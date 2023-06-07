@@ -68,8 +68,9 @@ function App() {
         <Route path="/Restaurant" element={<Private Item={Restaurant} />} />
         <Route path="/DrinkPartner" element={<Private Item={DrinkPartner} />} />
         <Route path="/dishes/category/:category_id" element={<Private Item={DishCategory} />} />
-        <Route path="/dishes/restaurant/:restaurant_id" element={<Private Item={DishRestaurantPartnes} />} />
+    
         <Route path="/drinkpartner/:id" element={<Private Item={AdminDrinkAndDish} />} />
+        <Route path="/dishes/restaurant/:restaurant_id" element={<Private Item={DishRestaurantPartnes} />} />
         <Route path="drinksuggestions/:dish_id" element={<Private Item={SugestionDrink} />} />
         <Route path="/contact" element={<Private Item={Contact} />} />
 

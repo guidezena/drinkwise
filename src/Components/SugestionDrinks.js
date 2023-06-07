@@ -14,29 +14,29 @@ function SugestionDrink() {
     const [isPremium, setIsPremium] = useState(null)
 
     useEffect(() => {
-        setTimeout(() => {
-            if (!dish_id) return
-                if (isPremium === null) return
-                const fetchData = async () => {
-                    var myHeaders = new Headers();
-                    console.log(isPremium)
-                    myHeaders.append("is-premium", isPremium);
-                    var requestOptions = {
-                        method: 'GET',
-                        headers: myHeaders,
-                    };
-                    const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
-                    const jsonData = await response.json()
-                    setName(jsonData.name);
-                    setImage(jsonData.image);
-                    setDescription(jsonData.description);
-                    setData(jsonData.reverse());
-                    setRemoveLoading(true)
-                    console.log(jsonData)
 
+        if (!dish_id) return
+        if (isPremium === null) return
+        const fetchData = async () => {
+            var myHeaders = new Headers();
+            console.log(isPremium)
+            myHeaders.append("is-premium", isPremium);
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
             };
-            fetchData();
-        }, 2000)
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
+            const jsonData = await response.json()
+            setName(jsonData.name);
+            setImage(jsonData.image);
+            setDescription(jsonData.description);
+            setData(jsonData.reverse());
+            setRemoveLoading(true)
+            console.log(jsonData)
+
+        };
+        fetchData();
+
     }, [dish_id, isPremium]);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -49,9 +49,9 @@ function SugestionDrink() {
 
     }, [])
 
-    
 
-    
+
+
 
 
     return (

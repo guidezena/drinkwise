@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/NavBar";
-import Image from "../Components/Image";
+import ImageRestaurant from "../Components/ImageRestaurant";
 import PartnerDishes from "../Components/PartnerDishes";
 import EatAndDrinks from "../Components/EatAndDrinks";
 import Category from "../Components/Category";
@@ -13,7 +13,7 @@ function DishRestaurantPartnes() {
             <Navbar></Navbar>
 
             <div>
-                <Image></Image>
+                <ImageRestaurant></ImageRestaurant>
             </div>
 
             <div>

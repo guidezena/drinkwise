@@ -12,19 +12,16 @@ function Dish_Free() {
 
     const [data, setData] = useState([]);
     useEffect(() => {
-        setTimeout(() => {
-            const fetchData = async () => {
-                const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
-                const jsonData = await response.json();
-                setData(jsonData.reverse());
-                setRemoveLoading(true)
-                setTimeout(() => {
 
-                })
-            };
+        const fetchData = async () => {
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/categories");
+            const jsonData = await response.json();
+            setData(jsonData.reverse());
+            setRemoveLoading(true)
 
-            fetchData();
-        }, 2000)
+        };
+
+        fetchData();
     }, []);
 
     const [isAdmin, setIsAdmin] = useState(false)
@@ -34,7 +31,7 @@ function Dish_Free() {
         setIsAdmin(user.is_admin)
 
     }, [])
-   
+
 
     return (
         <div className="adjust_padding">
@@ -48,7 +45,7 @@ function Dish_Free() {
                         }
                         {
                             !isAdmin && (
-                               
+
                                 navigate(`/dishes/category/${item.ID}`)
                             )
                         }

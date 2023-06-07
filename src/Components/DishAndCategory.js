@@ -15,21 +15,20 @@ function DishAndCategory() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        setTimeout(() => {
-            if (!category_id) return
-            const fetchData = async () => {
-                const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/dishes?category_id=${category_id}`);
-                const jsonData = await response.json();
-                setName(jsonData.name);
-                setImage(jsonData.image);
-                setDescription(jsonData.description);
-                setData(jsonData.reverse());
-                setRemoveLoading(true)
-                console.log(jsonData)
+        if (!category_id) return
+        const fetchData = async () => {
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/dishes?category_id=${category_id}`);
+            const jsonData = await response.json();
+            setName(jsonData.name);
+            setImage(jsonData.image);
+            setDescription(jsonData.description);
+            setData(jsonData.reverse());
+            setRemoveLoading(true)
+            console.log(jsonData)
 
-            };
-            fetchData();
-        }, 2000)
+        };
+        fetchData();
+
     }, [category_id]);
 
     const [isAdmin, setIsAdmin] = useState(false)

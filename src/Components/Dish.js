@@ -13,19 +13,15 @@ function GetDishes() {
 
 
   useEffect(() => {
-    setTimeout(() => {
-      const fetchData = async () => {
-        const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/dishes");
-        const jsonData = await response.json();
-        setData(jsonData.reverse());
-        setRemoveLoading(true)
-        setTimeout(() => {
 
-        })
-      };
+    const fetchData = async () => {
+      const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/dishes");
+      const jsonData = await response.json();
+      setData(jsonData.reverse());
+      setRemoveLoading(true)
+    };
 
-      fetchData();
-    }, 2000)
+    fetchData();
   }, []);
 
   const [isAdmin, setIsAdmin] = useState(false);

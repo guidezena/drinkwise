@@ -4,23 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import Loading from "./Loading";
 
 function CardRestaurantRight() {
-    
+
     const [removeLoading, setRemoveLoading] = useState(false)
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     useEffect(() => {
-        setTimeout(() => {
-            const fetchData = async () => {
-                const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
-                const jsonData = await response.json();
-                setData(jsonData.reverse());
-                setRemoveLoading(true)
-                setTimeout(() => {
 
-                })
-            };
-            fetchData();
-        }, 2000)
+        const fetchData = async () => {
+            const response = await fetch("https://mighty-lowlands-25016.herokuapp.com/restaurants");
+            const jsonData = await response.json();
+            setData(jsonData.reverse());
+            setRemoveLoading(true)
+        };
+        fetchData();
     }, []);
     const [isAdmin, setIsAdmin] = useState(false)
     useEffect(() => {
