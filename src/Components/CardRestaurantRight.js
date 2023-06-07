@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Loading from "./Loading";
 
 function CardRestaurantRight() {
+    
     const [removeLoading, setRemoveLoading] = useState(false)
     const navigate = useNavigate();
     const [data, setData] = useState([]);

@@ -12,7 +12,6 @@ function ImageContact() {
                     <p className='p'>
                         Bem-vindo à nossa página de contato para se tornar um restaurante parceiro! Estamos empolgados em expandir nossa rede de estabelecimentos culinários excepcionais e oferecer aos nossos clientes uma experiência gastronômica ainda mais diversificada.
 
-
                     </p>
                 </div>
                   <div class="img"><img className='adjust_image' src = {myImage}/></div>

@@ -4,6 +4,47 @@ import "../Styles/card.css"
 
 
 function ImageFragment() {
+
+    /*
+    TESTES 
+
+
+    const { id } = useParams();
+    const [name, setName] = useState("");
+    const [image, setImage] = useState("");
+    const [description, setDescription] = useState("");
+    const [data, setData] = useState([]);
+
+
+    useEffect(() => {
+
+        if (!id) return
+        const fetchData = async () => {
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/dishes/${id}`);
+            const jsonData = await response.json();
+            setName(jsonData.name);
+            setDescription(jsonData.description);
+            setData(jsonData);
+            setImage(jsonData.image);
+            console.log(jsonData)
+        };
+
+        fetchData();
+    }, [id])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/dishes`);
+            const jsonData = await response.json();
+            setData(jsonData);
+            
+        };
+
+        fetchData();
+    }, []);
+
+
+    */
     return (
         <>
             <section>

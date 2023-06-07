@@ -11,31 +11,33 @@ function SugestionDrink() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [data, setData] = useState([]);
-    const [isPremium, setIsPremium] = useState(false)
+    const [isPremium, setIsPremium] = useState(null)
 
     useEffect(() => {
         setTimeout(() => {
             if (!dish_id) return
-            const fetchData = async () => {
-                var myHeaders = new Headers();
-                myHeaders.append("is-premium", isPremium);
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                };
-                const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
-                const jsonData = await response.json()
-                setName(jsonData.name);
-                setImage(jsonData.image);
-                setDescription(jsonData.description);
-                setData(jsonData.reverse());
-                setRemoveLoading(true)
-                console.log(jsonData)
+                if (isPremium === null) return
+                const fetchData = async () => {
+                    var myHeaders = new Headers();
+                    console.log(isPremium)
+                    myHeaders.append("is-premium", isPremium);
+                    var requestOptions = {
+                        method: 'GET',
+                        headers: myHeaders,
+                    };
+                    const response = await fetch(`https://mighty-lowlands-25016.herokuapp.com/drinksuggestions/${dish_id}`, requestOptions);
+                    const jsonData = await response.json()
+                    setName(jsonData.name);
+                    setImage(jsonData.image);
+                    setDescription(jsonData.description);
+                    setData(jsonData.reverse());
+                    setRemoveLoading(true)
+                    console.log(jsonData)
 
             };
             fetchData();
         }, 2000)
-    }, [dish_id]);
+    }, [dish_id, isPremium]);
 
     const [isAdmin, setIsAdmin] = useState(false)
     useEffect(() => {
@@ -46,6 +48,10 @@ function SugestionDrink() {
         console.log(user)
 
     }, [])
+
+    
+
+    
 
 
     return (
