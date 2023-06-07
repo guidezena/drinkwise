@@ -1,22 +1,35 @@
-import React, { useState } from 'react'
-import "../Styles/register.css"
+import React, { useState } from 'react';
+import "../Styles/register.css";
 import EmailIcon from '@mui/icons-material/Email';
 import KeyIcon from '@mui/icons-material/Key';
 import PersonIcon from '@mui/icons-material/Person';
-import logoDrinkWise from '../img/logodw.png'
+import logoDrinkWise from '../img/logodw.png';
 
 
 function Register() {
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [password_confirmation, setConfirmationPassword] = useState("")
-    const [show, setShow] = useState(false)
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [password_confirmation, setConfirmationPassword] = useState("");
+    const [show, setShow] = useState(false);
 
 
     async function handleRegister() {
+        // Verificar se os campos estão vazios
+        if (!name || !email || !password || !password_confirmation) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Verificar se o email está no formato correto
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Por favor, digite um email válido.');
+            return;
+        }
+
         try {
-            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/users',{
+            const response = await fetch('https://mighty-lowlands-25016.herokuapp.com/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,16 +40,16 @@ function Register() {
             if (response.status === 201) {
                 // Login bem-sucedido, redirecionar para a página principal
                 window.location.href = '/login';
-                alert('Cadastro feito com sucesso')
-            } else if (response.status === 401){
+                alert('Cadastro feito com sucesso');
+            } else if (response.status === 401) {
                 // Login mal-sucedido, exibir mensagem de erro
                 alert('Suas senhas estão diferentes!');
-            }else if (response.status === 409){
-                alert('O seu email ja esta em uso');
+            } else if (response.status === 409) {
+                alert('O seu email já está em uso');
             }
         } catch (error) {
             // Erro ao chamar a API, exibir mensagem de erro
-            console.log(error)
+            console.log(error);
             alert('Erro ao fazer o cadastro');
         }
     }
@@ -47,7 +60,7 @@ function Register() {
             <div className="login-logo">
                 <img
                     src={logoDrinkWise}
-                    alt="Imagem "
+                    alt="Imagem"
                 />
             </div>
 
@@ -82,10 +95,10 @@ function Register() {
                         onChange={e => setPassword(e.target.value)}
                     />
                 </div>
-                
+
                 <div className="login-loginInputPassword">
                     <KeyIcon />
-                    <input  
+                    <input
                         placeholder="Confirme sua senha"
                         type={show ? "text" : "password"}
                         value={password_confirmation}
@@ -95,12 +108,9 @@ function Register() {
                 <button onClick={handleRegister} type="submit">
                     Cadastrar
                 </button>
-
             </div>
-
         </div>
-
-    )
+    );
 }
 
-export default Register
+export default Register;
